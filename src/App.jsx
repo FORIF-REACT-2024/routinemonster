@@ -3,6 +3,7 @@ import MakeRoutine from "./components/makeRoutine";
 import TimeSelector from "./components/TimeSelector";
 import WriteNickname from "./components/WriteNickname";
 import CompleteButton from "./components/CompleteButton";
+import DeleteButton from "./components/DeleteButton";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <WriteNickname />
       <TimeSelector />
       <CompleteButton />
+      <DeleteButton />
     </div>
   );
 }
