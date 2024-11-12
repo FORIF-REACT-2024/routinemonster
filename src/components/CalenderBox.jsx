@@ -4,7 +4,7 @@ function CalendarBox({ date, todo1, todo2, todo3, color1, color2, color3 }) {
 	const colorClass3 = color3 ? `bg-${color3}` : "bg-gray-300";
 
 	return (
-		<div className="w-24 h-24 border-2 border-blue-200 rounded-xl p-2">
+		<button className="w-24 h-24 border-2 border-blue-200 rounded-xl p-2">
 			<div className="text-sm text-center">{date}</div>
 
 			{todo1 && ( //완료한 목표가 있을 때만!
@@ -25,7 +25,7 @@ function CalendarBox({ date, todo1, todo2, todo3, color1, color2, color3 }) {
 					<div className="text-xs ml-1">{todo3}</div>
 				</div>
 			)}
-		</div>
+		</button>
 	);
 }
 

@@ -1,10 +1,10 @@
-import DeleteButton from "./components/DeleteButton";
+import CategoryButton from "./components/CategoryBox";
 
 function App() {
 
   return (
     <div>
-      <DeleteButton />
+      <CategoryButton category={3} />
     </div>
   );
 }
