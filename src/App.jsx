@@ -15,10 +15,12 @@ function App() {
       <WriteNickname />
       <TimeSelector />
       <CompleteButton />
+
       <WriteComments/>
       <DeleteButton/>
+      <DeleteButton />
+
     </div>
   );
-}
 
 export default App;
