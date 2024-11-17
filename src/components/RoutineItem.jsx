@@ -36,10 +36,10 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
             <CategoryBox category={category} />
 
             {/* 항목 제목 표시 */}
-            <div className="text-lg font-semibold">
+            <p className="text-lg font-semibold">
                 {title}
-            </div>
-
+            </p>
+            
             {/* 기간, 횟수, 달성률 표시 */}
             <div className="flex ml-auto">
                 {/* 기간 표시 */}
