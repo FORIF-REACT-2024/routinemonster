@@ -56,9 +56,8 @@ const RoutineToday = () => {
                 ))}
               </div>
 
-              {/* 코멘트 섹션 */}
               <div className="mt-6">
-                <CommentInput placeholder="나는 오늘도 불을을 올린다...@@" />
+                <CommentInput  />
               </div>
 
               {/* 저장 버튼 */}

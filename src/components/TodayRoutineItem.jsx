@@ -49,7 +49,7 @@ export default function TodayRoutineItem({ category, title, startDate, endDate, 
 
                 {/* 횟수 표시 */}
                 <div className="w-[83px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
-                    {frequency}회 이상
+                    {frequency}
                 </div>
             </div>
         </div>
