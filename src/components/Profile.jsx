@@ -10,25 +10,24 @@ const Profile = ({
   onRoutineGoalPress
 }) => {
   return (
-    // w-64 → w-full로 변경하고 전체 padding 증가
     <div className="flex flex-col p-8 border-2 border-blue-200 rounded-2xl bg-white w-full">
-      {/* 날짜 표시 - 크기와 패딩 증가 */}
+      {/* 날짜 표시  */}
       <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
         <span className="text-3xl font-bold">{date}</span>
       </div>
 
-      {/* 점선으로 감싸진 컨텐츠 영역 - 패딩 증가 */}
+      {/* 점선으로 감싸진 컨텐츠 영역 */}
       <div className="border-2 border-dashed border-gray-200 rounded-xl">
         <div className="border-2 border-gray-200 rounded-xl m-[1px] p-8">
           
-          {/* 프로필 영역 - 이미지와 텍스트 크기 증가 */}
+          {/* 프로필 영역 */}
           <div className="flex flex-col items-center mb-20">
             <div className="mb-4">
               {profileImage ? (
                 <img 
                   src={profileImage} 
                   alt="프로필"
-                  className="w-32 h-32 rounded-full object-cover" // 이미지 크기 증가
+                  className="w-32 h-32 rounded-full object-cover"
                 />
               ) : (
                 <div className="w-32 h-32 rounded-full bg-gray-200" />
