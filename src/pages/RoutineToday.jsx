@@ -2,14 +2,13 @@ import React from 'react';
 import Profile from '../components/Profile';
 import CommentInput from '../components/CommentInput';
 import TodayRoutineItem from '../components/TodayRoutineItem';
-import profileImage from '../assets/profile1.jpg';
 
 const RoutineToday = () => {
     const routines = Array(7).fill({
         type: '운동',
         description: '5km 실적 앞고 달리기',
         period: '2024.10.10.목 ~ 2024.10.12.토',
-        frequency: '3회 이상'
+        frequency: '3'
     });
 
     return (
@@ -27,7 +26,7 @@ const RoutineToday = () => {
                 <Profile 
                 date="2024.10.05.토"
                 nickname="닉네임"
-                profileImage={profileImage}
+                
                 onTodayRoutinePress={() => {}}
                 onCalendarPress={() => {}}
                 onMyPagePress={() => {}}
