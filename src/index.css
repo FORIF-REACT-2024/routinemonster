@@ -9,4 +9,5 @@ body {
     font-family: "Dongle", sans-serif;
     font-size: large;
     font-style: normal;
+    @apply bg-cornflower-50 min-h-screen;
 }
