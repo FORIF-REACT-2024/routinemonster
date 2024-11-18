@@ -1,4 +1,4 @@
-export default function MakeRoutine() {
+export default function MakeRoutineButton() {
     return (
         <div>
             <button className="w-40 h-8 px-2 border border-blue-200 rounded-md text-xl text-center">
