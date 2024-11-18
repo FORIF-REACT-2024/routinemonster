@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Easteregg from "./pages/Easteregg.jsx";
+import RoutineToday from "./pages/RoutineToday.jsx";
 // 토스트 알림 띄우기 위해 쓰는 라이브러리
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path: "/easteregg",
     element: <Easteregg />,
   },
+  {
+    path: "/today",
+    element: <RoutineToday />,
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
