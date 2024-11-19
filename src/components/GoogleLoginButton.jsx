@@ -10,7 +10,7 @@ const GoogleLoginButton = () => {
             <GoogleLogin
                 onSuccess={(res) => {
                     console.log(res);
-                    navigate("/SignupComplete");
+                    navigate("/SignupCompletePage");
                 }}
                 onError={(err) => {
                     console.error(err);
