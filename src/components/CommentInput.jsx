@@ -1,7 +1,7 @@
 const CommentInput = () => {
     return (
       <form>
-      <div className="max-w-3xl">  {/* 최대 너비 제한 및 가운데 정렬 */}
+      <div className>
         <div className="flex items-center bg-blue-50 rounded-3xl p-4">  {/* 더 둥근 테두리 */}
           <label className="flex items-center w-full">
             오늘의 코멘트

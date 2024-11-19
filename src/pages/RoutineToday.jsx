@@ -2,9 +2,10 @@ import React from 'react';
 import Profile from '../components/Profile';
 import CommentInput from '../components/CommentInput';
 import TodayRoutineItem from '../components/TodayRoutineItem';
+import { Checkbox } from '@mui/material';
 
 const RoutineToday = () => {
-    const routines = Array(30).fill({
+    const routines = Array(7).fill({
         type: '운동',
         description: '5km 실적 앞고 달리기',
         startDate: '2024-11-01',
@@ -12,6 +13,8 @@ const RoutineToday = () => {
         frequency: '3',
         status: 'ongoing'
     });
+
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
         <div className="min-h-screen bg-blue-50 p-4">
@@ -47,13 +50,15 @@ const RoutineToday = () => {
                 {/* 루틴 리스트 */}
                 <div className="space-y-4">
                     {routines.map((routine, index) => (
-                    <TodayRoutineItem
-                        key={index}
-                        type={routine.type}
-                        description={routine.description}
-                        period={routine.period}
-                        frequency={routine.frequency}
-                    />
+                        <div key={index} className="flex items-center space-x-4">
+                            <Checkbox {...label} />
+                            <TodayRoutineItem
+                                type={routine.type}
+                                description={routine.description}
+                                period={routine.period}
+                                frequency={routine.frequency}
+                            />
+                        </div>
                     ))}
                 </div>
 
