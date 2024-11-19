@@ -17,28 +17,10 @@ const RoutineToday = () => {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
     return (
-        <div className="min-h-screen bg-blue-50 p-4">
-        {/* 페이지 타이틀 */}
-        <div className="max-w-5xl mx-auto mb-4">
-            <h1 className="text-4xl font-bold">Routine Monster</h1>
-        </div>
-
+        <div>
         {/* 메인 컨텐츠 컨테이너 */}
         <div className="max-w-5xl mx-auto">
             <div className="flex gap-4">
-            {/* 왼쪽 프로필 섹션 */}
-            <div className="w-[360px]"> {/* width 조정 */}
-                <Profile 
-                date="2024.10.05.토"
-                nickname="닉네임"
-                
-                onTodayRoutinePress={() => {}}
-                onCalendarPress={() => {}}
-                onMyPagePress={() => {}}
-                onRoutineGoalPress={() => {}}
-                />
-            </div>
-
             {/* 오른쪽 루틴 섹션 */}
             <div className="flex-1">
                 <div className="border-2 border-blue-200 rounded-2xl bg-white p-6">
