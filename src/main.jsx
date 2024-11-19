@@ -38,9 +38,10 @@ const router = createBrowserRouter([
     path: "/routine-lists",
     element: <RoutineList />,
   },
-  path: "/SignupCompletePage",
-  element: <SignupCompletePage />,
-  }
+  {
+    path: "/SignupCompletePage",
+    element: <SignupCompletePage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
