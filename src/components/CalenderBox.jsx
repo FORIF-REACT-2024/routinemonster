@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CalendarBox = ({ userId, month, date }) => {
 	const [completedRoutines, setCompletedRoutines] = useState([]);
@@ -11,9 +12,12 @@ const CalendarBox = ({ userId, month, date }) => {
 
     const fetchCompletedRoutines = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3000/api/date?userId=${userId}&date=${formattedDate}`
-        );
+        const response = await axios.get("http://localhost:3000/api/date", {
+					params: { date: formattedDate }, 
+					withCredentials: true, 
+				});
+				
+				console.log("일별 루틴 데이터: ", response.date.data);
         const data = await response.json();
 
         const completed = data.todaylist.filter(routine => routine.completed);
