@@ -18,9 +18,9 @@ const CalendarBox = ({ userId, month, date }) => {
 				});
 				
 				console.log("일별 루틴 데이터: ", response.date.data);
-        const data = await response.json();
+        // const data = await response.json();
 
-        const completed = data.todaylist.filter(routine => routine.completed);
+        const completed = response.todaylist.filter(routine => routine.completed);
         
         setCompletedRoutines(completed);
       } catch (err) {
@@ -38,15 +38,24 @@ const CalendarBox = ({ userId, month, date }) => {
 	return (
 		<div className="w-24 h-24 border-2 border-blue-200 rounded-xl">
 			<p className="text-lg text-center">{date}</p>
-
-			{completedRoutines.slice(0, 3).map((routine, index) => (
-        <div key={index} className="flex items-center">
-          <div className="min-w-3 h-3 rounded-full mt-0.5 ml-1"></div>
-          <div className="text-sm ml-1 truncate">{routine.title}</div>
-        </div>
-      ))}
+	
+			{completedRoutines.slice(0, 3).map((routine, index) => {
+				const color = routine.category === 'reading' 
+					? 'bg-purple-400' 
+					: routine.category === 'workout' 
+						? 'bg-yellow-400' 
+						: 'bg-green-400';
+	
+				return (
+					<div key={index} className="flex items-center">
+						<div className={`min-w-3 h-3 rounded-full mt-0.5 ml-1 ${color}`}></div>
+						<div className="text-sm ml-1 truncate">{routine.title}</div>
+					</div>
+				);
+			})}
 		</div>
 	);
+	
 }
 
 export default CalendarBox;
