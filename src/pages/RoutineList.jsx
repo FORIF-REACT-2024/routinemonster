@@ -45,24 +45,8 @@ const RoutineList = () => {
     };
 
     return (
-        <div className="min-h-screen bg-blue-50 p-4">
-            <div className="max-w-5xl mx-auto mb-4">
-                <h1 className="text-4xl font-bold">Routine Monster</h1>
-            </div>
-
-            <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto">
                 <div className="flex gap-4">
-                    <div className="w-[360px]">
-                        <Profile 
-                            date="2024.10.05.토"
-                            nickname="닉네임"
-                            onTodayRoutinePress={() => {}}
-                            onCalendarPress={() => {}}
-                            onMyPagePress={() => {}}
-                            onRoutineGoalPress={() => {}}
-                        />
-                    </div>
-
                     <div className="flex-1">
                         <div className="border-2 border-blue-200 rounded-2xl bg-white p-6">
                             <div className="mb-6">
@@ -123,7 +107,6 @@ const RoutineList = () => {
                     </div>
                 </div>
             </div>
-        </div>
     );
 };
 
