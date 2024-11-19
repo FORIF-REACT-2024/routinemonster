@@ -7,6 +7,7 @@ import Easteregg from "./pages/Easteregg.jsx";
 // 토스트 알림 띄우기 위해 쓰는 라이브러리
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SignupComplete from "./components/SignupComplete.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path: "/easteregg",
     element: <Easteregg />,
   },
+  {
+    path: "/SignupComplete",
+    element: <SignupComplete />,
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
