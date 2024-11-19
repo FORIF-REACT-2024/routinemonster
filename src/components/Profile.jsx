@@ -1,14 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ 
     date = '2024.11.21.목',
     nickname = '닉네임',
     profileImage,
-    onTodayRoutinePress,
-    onCalendarPress,
     onMyPagePress,
-    onRoutineGoalPress
 }) => {
+    const navigate = useNavigate();
+    const handleTodayRoutine = () => {
+        navigate('/today');
+    }
+    const handleCalender = () => {
+        navigate('/Calender');
+    }
+    const handleRoutineList = () => {
+        navigate('/routine-lists');
+    }
     return (
         // w-64 → w-full로 변경하고 전체 padding 증가
         <div className="flex flex-col p-8 border-2 border-blue-200 rounded-2xl bg-white w-full">
@@ -40,14 +48,14 @@ const Profile = ({
             {/* 메뉴 버튼들 */}
             <div className="flex flex-col gap-4 items-center">
             <button 
-                onClick={onTodayRoutinePress}
+                onClick={handleTodayRoutine}
                 className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
             >
                 오늘의 루틴
             </button>
 
             <button 
-                onClick={onCalendarPress}
+                onClick={handleCalender}
                 className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
             >
                 캘린더
@@ -61,7 +69,7 @@ const Profile = ({
             </button>
 
             <button 
-                onClick={onRoutineGoalPress}
+                onClick={handleRoutineList}
                 className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
             >
                 루틴 목표
