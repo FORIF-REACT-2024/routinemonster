@@ -4,14 +4,15 @@ import CalenderBox from '../components/CalenderBox';
 
 const CalenderMain = ({userId, month}) => {
 	//11월이랑 12월만 고려했심다 ,,
-	let endDate = month=='November'? 30 : 31;
-	const days = Array.from({ length: endDate }, (_, index) => index + 1);
+	const endDate = month==11 ? 30 : 31;
+	const monthEng = month==11 ? 'November' : 'December'
+	const dates = Array.from({ length: endDate }, (_, index) => index + 1);
 
   return (
 		<div className='flex flex-col justify-center items-center'>
 			<div className='flex'>
 				<p className='text-5xl'>&lt;</p>
-				<h2 className='text-5xl px-10'>{month}</h2>
+				<h2 className='text-5xl px-10'>{monthEng}</h2>
 				<p className='text-5xl'>&gt;</p>
 			</div>
 
@@ -25,24 +26,24 @@ const CalenderMain = ({userId, month}) => {
 				<CalenderDay day='Saturday'/>
 			</div>
 
-			{month=='November' && (
+			{month==11 && (
 			<div className='grid grid-cols-7 gap-2'>
 				<CalenderBox/>
 				<CalenderBox/>
 				<CalenderBox/>
 				<CalenderBox/>
 				<CalenderBox/>
-				{days.map((day) => (
-        	<CalenderBox userId={userId} month={month} date={day} />
+				{dates.map((date) => (
+        	<CalenderBox userId={userId} month={month} date={date} />
       	)
 				)}
 			</div>
 			)}
 
-			{month=='December' && (
+			{month==12 && (
 			<div className='grid grid-cols-7 gap-2'>
-				{days.map((day) => (
-        	<CalenderBox userId={userId} month={month} date={day} />
+				{days.map((date) => (
+        	<CalenderBox userId={userId} month={month} date={date} />
       	)
 				)}
 				<CalenderBox/>
