@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const CalendarBox = ({ userId, month, date }) => {
+const CalendarBox = ({ month, date }) => {
 	const [completedRoutines, setCompletedRoutines] = useState([]);
   const [error, setError] = useState(null);
 
@@ -29,7 +29,7 @@ const CalendarBox = ({ userId, month, date }) => {
     };
 
     fetchCompletedRoutines();
-  }, [userId, month, date]);
+  }, [month, date]);
 
   if (error) {
     return <div>{error}</div>;
