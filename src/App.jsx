@@ -1,11 +1,11 @@
 import React from 'react';
 import RoutineList from './pages/RoutineList';
-import RadningPage from "./pages/RandingPage";
+import RandingPage from "./pages/RandingPage";
 
 const App = () => {
   return (
     <div>
-      <RoutineList />
+      <RandingPage />
     </div>
   );
 };
