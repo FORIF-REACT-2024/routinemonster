@@ -9,12 +9,37 @@ const Profile = ({
   onMyPagePress,
   onRoutineGoalPress
 }) => {
+<<<<<<< Updated upstream
   return (
     <div className="flex flex-col p-8 border-2 border-blue-200 rounded-2xl bg-white w-full">
       {/* 날짜 표시  */}
       <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
         <span className="text-3xl font-bold">{date}</span>
       </div>
+=======
+    const navigate = useNavigate();
+    const handleTodayRoutine = () => {
+        navigate('/today');
+    }
+    const handleCalender = () => {
+        navigate('/Calender');
+    }
+    const handleRoutineList = () => {
+        navigate('/routine-lists');
+    }
+    return (
+        <div className="min-h-screen bg-blue-50 p-4">
+            <div className="max-w-5xl mx-auto mb-4">
+                <h1 className="text-4xl font-bold">Routine Monster</h1>
+            </div>
+
+                
+        <div className="flex flex-col p-8 border-2 border-blue-200 rounded-2xl bg-white w-full">
+        {/* 날짜 표시 - 크기와 패딩 증가 */}
+        <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
+            <span className="text-3xl font-bold">{date}</span>
+        </div>
+>>>>>>> Stashed changes
 
       {/* 점선으로 감싸진 컨텐츠 영역 */}
       <div className="border-2 border-dashed border-gray-200 rounded-xl">
@@ -59,6 +84,7 @@ const Profile = ({
   마이페이지
 </button>
 
+<<<<<<< Updated upstream
 <button 
   onClick={onRoutineGoalPress}
   className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
@@ -66,10 +92,27 @@ const Profile = ({
   루틴 목표
 </button>
           </div>
+=======
+            <button 
+                onClick={handleRoutineList}
+                className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
+            >
+                루틴 목록
+            </button>
+            </div>
+        </div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
   );
+=======
+    </div>
+
+    
+    );
+>>>>>>> Stashed changes
 };
 
 export default Profile;
