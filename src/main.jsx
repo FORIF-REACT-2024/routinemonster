@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CalenderMain from "./pages/CalenderMain.jsx";
 import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
+import SignupCompletePage from "./pages/SignupCompletePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,9 @@ const router = createBrowserRouter([
     path: "/routine-lists",
     element: <RoutineList />,
   },
+  path: "/SignupCompletePage",
+  element: <SignupCompletePage />,
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(

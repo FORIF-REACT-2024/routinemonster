@@ -1,6 +1,6 @@
-import MakeRoutineButton from "./MakeRoutineButton";
+import MakeRoutineButton from "../components/MakeRoutineButton";
 
-export default function SignupComplete() {
+export default function SignupCompletePage() {
     return (
         <div className="flex items-center justify-center h-screen bg-cornflower-50">
             <div className="bg-white border-2 border-blue-400 rounded-lg p-6 shadow-md text-center">
