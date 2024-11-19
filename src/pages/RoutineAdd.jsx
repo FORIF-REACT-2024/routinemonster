@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Profile from '../components/Profile';
 import CategoryBox from '../components/CategoryBox';
+import { useNavigate } from 'react-router-dom';
 
 const RoutineAdd = () => {
     const [startDate, setStartDate] = useState(null);
@@ -16,7 +17,12 @@ const RoutineAdd = () => {
     const handleCategoryClick = (category) => {
         setSelectedCategory(category); // 선택된 카테고리를 업데이트
     };
+    
+    const navigate = useNavigate();
 
+    const handleAddCancel = () => {
+        navigate('/routine-lists');
+    }
 
     return (
         <div className="min-h-screen bg-blue-50 p-4">
@@ -98,8 +104,11 @@ const RoutineAdd = () => {
                                     <button className="px-6 py-2 bg-blue-200 text-black rounded-md hover:bg-blue-300 transition-colors border-2 border-blue-300">
                                         저장하기
                                     </button>
-                                    <button className="px-6 py-2 bg-white text-black rounded-md hover:bg-gray-200 transition-colors border-2 border-blue-300">
-                                        취소하기
+                                    <button
+                                        className="px-6 py-2 bg-white text-black rounded-md hover:bg-gray-200 transition-colors border-2 border-blue-300"
+                                        onClick={handleAddCancel}
+                                        >
+                                            취소하기
                                     </button>
                                 </div>
                             </div>

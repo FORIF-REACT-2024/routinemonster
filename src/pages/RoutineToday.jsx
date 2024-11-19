@@ -4,11 +4,13 @@ import CommentInput from '../components/CommentInput';
 import TodayRoutineItem from '../components/TodayRoutineItem';
 
 const RoutineToday = () => {
-    const routines = Array(7).fill({
+    const routines = Array(30).fill({
         type: '운동',
         description: '5km 실적 앞고 달리기',
-        period: '2024.10.10.목 ~ 2024.10.12.토',
-        frequency: '3'
+        startDate: '2024-11-01',
+        endDate: '2024-11-19',
+        frequency: '3',
+        status: 'ongoing'
     });
 
     return (
