@@ -8,6 +8,10 @@ import RoutineToday from "./pages/RoutineToday.jsx";
 // 토스트 알림 띄우기 위해 쓰는 라이브러리
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CalenderMain from "./pages/CalenderMain.jsx";
+import RoutineAdd from "./pages/RoutineAdd.jsx";
+import RoutineList from "./pages/RoutineList.jsx";
+import SignupCompletePage from "./pages/SignupCompletePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +25,23 @@ const router = createBrowserRouter([
   {
     path: "/today",
     element: <RoutineToday />,
-  }
+  },
+  {
+    path: "/Calender",
+    element: <CalenderMain />,
+  },
+  {
+    path: "/Add",
+    element: <RoutineAdd />,
+  },
+  {
+    path: "/routine-lists",
+    element: <RoutineList />,
+  },
+  {
+    path: "/SignupCompletePage",
+    element: <SignupCompletePage />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(

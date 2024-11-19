@@ -1,25 +1,13 @@
-import { useNavigate } from "react-router-dom";
-
-export default function OngoingButton({ type }) {
-    const navigate = useNavigate();
-    const clickButton = () => {
-        if (type === 'ongoing') {
-            navigate('/ongoing-routines');
-        } else if (type === 'completed') {
-            navigate ('/completed-routines')
-        } else if (type === 'upcoming') {
-            navigate ('/upcoming-routines')
-        }
-    };
-
+export default function OngoingButton({ type, onClick, selected }) {
+    const buttonStyles = selected
+        ? "w-[54px] h-[40px] rounded-full bg-blue-500 text-white"
+        : "w-[54px] h-[40px] rounded-full bg-blue-200 text-black";
     return (
         <button
-            className = "w-[54px] h-[40px] bg-blue-200 text-black rounded-full"
-            onClick = {clickButton}
+            className={buttonStyles}
+            onClick={() => onClick(type)}
         >
-            {type === 'ongoing'? '진행중': type === 'completed'? '진행완료': '진행예정'}
+            {type === 'ongoing' ? '진행중' : type === 'completed' ? '진행완료' : '진행예정'}
         </button>
-
-        
     );
 }

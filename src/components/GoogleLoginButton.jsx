@@ -1,12 +1,24 @@
-export default function GoogleLoginButton() {
+import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
+const GoogleLoginButton = () => {
+    const clientId = "437640908018-e1ss3qhnrvo9o979v6q6rvn6ar111ego.apps.googleusercontent.com";
+    const navigate = useNavigate();
     return (
-        <button className="flex items-center border rounded-lg border-sky-200 px-5 py-1">
-          <img
-            className="w-6 h-6 mr-2"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/"
-            alt="Google logo"
-          />
-          <span className="text-gray-800 text-xl">Google 계정으로 로그인</span>
-        </button>
-      );
-}
+        <GoogleOAuthProvider clientId={clientId}>
+            <GoogleLogin
+                onSuccess={(res) => {
+                    console.log(res);
+                    navigate("/SignupCompletePage");
+                }}
+                onError={(err) => {
+                    console.error(err);
+                }}
+            />
+        </GoogleOAuthProvider>
+    );
+};
+
+export default GoogleLoginButton;
+
