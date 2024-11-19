@@ -1,12 +1,16 @@
 import React from 'react';
-import RoutineList from './pages/RoutineList';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RandingPage from "./pages/RandingPage";
+import RoutineToday from './pages/RoutineToday'
 
 const App = () => {
   return (
-    <div>
-      <RandingPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RandingPage />} />
+        <Route path="/routinetoday" element={<RoutineToday />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

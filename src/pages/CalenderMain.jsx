@@ -2,7 +2,7 @@ import React from 'react'
 import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
 
-const CalenderMain = ({userId, month}) => {
+const CalenderMain = ({month}) => {
 	//11월이랑 12월만 고려했심다 ,,
 	const endDate = month==11 ? 30 : 31;
 	const monthEng = month==11 ? 'November' : 'December'
@@ -34,7 +34,7 @@ const CalenderMain = ({userId, month}) => {
 				<CalenderBox/>
 				<CalenderBox/>
 				{dates.map((date) => (
-        	<CalenderBox userId={userId} month={month} date={date} />
+        	<CalenderBox month={month} date={date} />
       	)
 				)}
 			</div>
@@ -43,7 +43,7 @@ const CalenderMain = ({userId, month}) => {
 			{month==12 && (
 			<div className='grid grid-cols-7 gap-2'>
 				{days.map((date) => (
-        	<CalenderBox userId={userId} month={month} date={date} />
+        	<CalenderBox month={month} date={date} />
       	)
 				)}
 				<CalenderBox/>
