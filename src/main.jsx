@@ -12,7 +12,6 @@ import CalenderMain from "./pages/CalenderMain.jsx";
 import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
 import SignupCompletePage from "./pages/SignupCompletePage.jsx";
-import CalenderMainTest from "./pages/CalenderMainTest.jsx";
 import CalendarBox from "./components/CalenderBox.jsx";
 
 const router = createBrowserRouter([
