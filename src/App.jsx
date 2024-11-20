@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RandingPage from "./pages/RandingPage";
-import CalendarBoxTest from './components/CalenderBoxTest';
+import CalenderMain from './pages/CalenderMain';
 
 const App = () => {
   return (
     <div>
-      <CalendarBoxTest month={11} date={1} />
+      {/* <RandingPage /> */}
+      {/* <CalendarBoxTest month={11} date={1} /> */}
+      <CalenderMain month={11}/>
     </div>
   );
 };
