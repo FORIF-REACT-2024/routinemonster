@@ -1,8 +1,11 @@
 import React from 'react'
 import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
+import { useParams } from 'react-router-dom';
 
-const CalenderMain = ({month}) => {
+const CalenderMain = () => {
+	const {month} = useParams();
+
 	//11월이랑 12월만 고려했심다 ,,
 	const endDate = month==11 ? 30 : 31;
 	const monthEng = month==11 ? 'November' : 'December'

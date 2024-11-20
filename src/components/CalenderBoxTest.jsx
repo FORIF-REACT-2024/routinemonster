@@ -6,9 +6,9 @@ const CalendarBox = ({ month, date }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const selectedDate = new Date(2024, month - 1, date);
-    
+    const selectedDate = new Date(Date.UTC(2024, month - 1, date));  
     const formattedDate = selectedDate.toISOString().split('T')[0];
+		console.log(formattedDate);
 
     const fetchCompletedRoutines = async () => {
       try {
@@ -16,15 +16,15 @@ const CalendarBox = ({ month, date }) => {
 					params: { date: formattedDate }, 
 					withCredentials: true, 
 				});
-				
-				console.log("일별 루틴 데이터: ", response.date.data);
-        const data = await response.json();
 
+				console.log("일별 루틴 데이터: ", response.data.date);
+        const data = await response.json();
+        console.log(data);
         const completed = data.todaylist.filter(routine => routine.completed);
         
         setCompletedRoutines(completed);
       } catch (err) {
-        setError('오류발생!!!!끄아아악');
+        setError("에러!!!!!!");
       }
     };
 
@@ -37,7 +37,7 @@ const CalendarBox = ({ month, date }) => {
 
 	return (
 		<div className="w-24 h-24 border-2 border-blue-200 rounded-xl">
-			<p className="text-lg text-center">{date}</p>
+			{/* <p className="text-lg text-center">{date}</p>
 	
 			{completedRoutines.slice(0, 3).map((routine, index) => {
 				const color = routine.category === 'reading' 
@@ -52,7 +52,7 @@ const CalendarBox = ({ month, date }) => {
 						<div className="text-sm ml-1 truncate">{routine.title}</div>
 					</div>
 				);
-			})}
+			})} */}
 		</div>
 	);
 	
