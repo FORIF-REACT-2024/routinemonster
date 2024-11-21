@@ -37,8 +37,9 @@ const GoogleLoginButton = () => {
             console.log("세션 데이터:", sessionResponse.data);
         } catch (err) {
             console.error("백엔드 전송 오류:", err);
+            console.error("에러 디버그 정보:", err.response?.data || "응답 없음");
         }
-        navigate("/SignupCompletePage");
+        navigate("/LoginCompletePage");
     };
 
 
