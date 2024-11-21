@@ -1,6 +1,6 @@
 import GoogleLoginButton from "../components/GoogleLoginButton";
 
-export default function RadningPage() {
+export default function LandingPage() {
     return (
         <div className="flex items-center justify-center h-screen bg-cornflower-50">
             <div className="bg-white border-2 border-blue-400 rounded-lg p-6 shadow-md text-center">

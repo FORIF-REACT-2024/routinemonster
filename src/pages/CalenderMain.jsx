@@ -4,10 +4,10 @@ import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
 import { useEffect, useState } from "react";
 
-const CalenderMain = ({month}) => {
+const CalenderMain = ({ month = 11 }) => {
   const year = 2024;
-  const endDate = month==11 ? 30 : 31;
-	const monthEng = month==11 ? 'November' : 'December'
+  const endDate = month == 11 ? 30 : 31;
+  const monthEng = month == 11 ? 'November' : 'December'
   const dates = Array.from({ length: endDate }, (_, index) => index + 1); //1 2 3.. 30 or 31 배열 생성
 
   const [data, setData] = useState(null);
@@ -17,10 +17,10 @@ const CalenderMain = ({month}) => {
   const fetchCompletedRoutines = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/api/date/calendar",{
-          params: { year, month },
-          withCredentials: true,
-        }
+        "http://localhost:3000/api/date/calendar", {
+        params: { year, month },
+        withCredentials: true,
+      }
       );
       // console.log("캘린더 데이터 가져오기 성공:", response.data);
       setData(response.data);
@@ -36,8 +36,8 @@ const CalenderMain = ({month}) => {
   useEffect(() => {
     fetchCompletedRoutines();
   }, [month]);
-  
-	// result 배열에 날짜별로 완료한 루틴들 저장하기
+
+  // result 배열에 날짜별로 완료한 루틴들 저장하기
   useEffect(() => {
     if (data && data.data) {
       const result = new Array(endDate).fill(null);
@@ -49,30 +49,30 @@ const CalenderMain = ({month}) => {
         }
       });
       setResult(result);
-			console.log('Result:', result);
+      console.log('Result:', result);
     }
   }, [data]);
-  
+
 
   return (
     <div className='flex flex-col justify-center items-center'>
-			<div className='flex'>
-				<p className='text-5xl'>&lt;</p>
-				<h2 className='text-5xl px-10'>{monthEng}</h2>
-				<p className='text-5xl'>&gt;</p>
-			</div>
+      <div className='flex'>
+        <p className='text-5xl'>&lt;</p>
+        <h2 className='text-5xl px-10'>{monthEng}</h2>
+        <p className='text-5xl'>&gt;</p>
+      </div>
 
       <div className='flex gap-2 pt-5 pb-2'>
-				<CalenderDay day='Sunday'/>
-				<CalenderDay day='Monday'/>
-				<CalenderDay day='Tuesday'/>
-				<CalenderDay day='Wednesday'/>
-				<CalenderDay day='Thursday'/>
-				<CalenderDay day='Friday'/>
-				<CalenderDay day='Saturday'/>
-			</div>
+        <CalenderDay day='Sunday' />
+        <CalenderDay day='Monday' />
+        <CalenderDay day='Tuesday' />
+        <CalenderDay day='Wednesday' />
+        <CalenderDay day='Thursday' />
+        <CalenderDay day='Friday' />
+        <CalenderDay day='Saturday' />
+      </div>
 
-      {month==11 && (
+      {month == 11 && (
         <div className='grid grid-cols-7 gap-2'>
           <CalenderBox />
           <CalenderBox />
@@ -80,23 +80,23 @@ const CalenderMain = ({month}) => {
           <CalenderBox />
           <CalenderBox />
           {dates.map((date) => (
-        		<CalenderBox date={date} completed={result[date-1] || []}/>
-      		)
-					)}
-      	</div>
+            <CalenderBox date={date} completed={result[date - 1] || []} />
+          )
+          )}
+        </div>
       )}
 
-			{month==12 && (
+      {month == 12 && (
         <div className='grid grid-cols-7 gap-2'>
           {dates.map((date) => (
-        		<CalenderBox date={date} completed={result[date-1] || []}/>
-      		)
-					)}
-					<CalenderBox />
+            <CalenderBox date={date} completed={result[date - 1] || []} />
+          )
+          )}
           <CalenderBox />
           <CalenderBox />
           <CalenderBox />
-      	</div>
+          <CalenderBox />
+        </div>
       )}
 
 
