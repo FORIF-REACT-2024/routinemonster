@@ -4,7 +4,7 @@ import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
 import { useEffect, useState } from "react";
 
-const CalenderMain = ({ month = 11 }) => {
+const CalenderMain = ({ month }) => {
   const year = 2024;
   const endDate = month == 11 ? 30 : 31;
   const monthEng = month == 11 ? 'November' : 'December'
