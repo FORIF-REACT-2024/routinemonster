@@ -24,10 +24,6 @@ const RoutineToday = () => {
             {/* 오른쪽 루틴 섹션 */}
             <div className="flex-1">
                 <div className="border-2 border-blue-200 rounded-2xl bg-white p-6">
-                {/* 유저 루틴 헤더 */}
-                <div className="mb-6">
-                    <h2 className="text-3xl font-bold text-center">🌼 닉네임's Routine 🌼</h2>
-                </div>
 
                 {/* 루틴 리스트 */}
                 <div className="space-y-4">

@@ -13,35 +13,48 @@ import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
 import LoginCompletePage from "./pages/LoginCompletePage.jsx";
 import CalendarBox from "./components/CalenderBox.jsx";
+import Main from "./pages/Main.jsx";
+import RadningPage from "./pages/RandingPage.jsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/easteregg",
-    element: <Easteregg />,
-  },
-  {
-    path: "/today",
-    element: <RoutineToday />,
-  },
-  {
-    path: "/Calender/:month",
-    element: <CalenderMain />,
-  },
-  {
-    path: "/Add",
-    element: <RoutineAdd />,
-  },
-  {
-    path: "/routine-lists",
-    element: <RoutineList />,
+    path: "/login",
+    element: <RadningPage />
   },
   {
     path: "/LoginCompletePage",
     element: <LoginCompletePage />,
+  },
+  { 
+    path: "/",
+    element: <Main />, // Main을 고정 레이아웃으로 사용
+    children: [
+      {
+        path: "/",
+        element: <RoutineToday />,
+      },
+      
+      {
+        path: "/easteregg",
+        element: <Easteregg />,
+      },
+      {
+        path: "/today",
+        element: <RoutineToday />,
+      },
+      {
+        path: "/Calender",
+        element: <CalenderMain month={11} />,
+      },
+      {
+        path: "/Add",
+        element: <RoutineAdd />,
+      },
+      {
+        path: "/routine-lists",
+        element: <RoutineList />,
+      },
+    ],
   },
 ]);
 
