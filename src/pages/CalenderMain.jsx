@@ -11,27 +11,27 @@ const CalenderMain = ({month}) => {
   const dates = Array.from({ length: endDate }, (_, index) => index + 1); //1 2 3.. 30 or 31 배열 생성
 
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [result, setResult] = useState(new Array(endDate).fill(null));
 
   const fetchCompletedRoutines = async () => {
     try {
+      console.log('데이터 가져올게요');
       const response = await axios.get(
         "http://localhost:3000/api/date/calendar",{
           params: { year, month },
           withCredentials: true,
         }
       );
-      // console.log("캘린더 데이터 가져오기 성공:", response.data);
+      console.log("캘린더 데이터 가져오기 성공:", response.data);
       setData(response.data);
     } catch (err) {
-      setError('오류발생!!!!끄아아악');
+      setError('오류발생!!!!끄ㅇ아아악');
+    } finally {
+      setLoading(false);
     }
   };
-
-  if (error) {
-    return <div>{error}</div>;
-  }
 
   useEffect(() => {
     fetchCompletedRoutines();
@@ -52,7 +52,13 @@ const CalenderMain = ({month}) => {
 			console.log('Result:', result);
     }
   }, [data]);
-  
+
+  if(loading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>{error}</div>
+  }
 
   return (
     <div className='flex flex-col justify-center items-center'>
@@ -80,13 +86,13 @@ const CalenderMain = ({month}) => {
           <CalenderBox />
           <CalenderBox />
           {dates.map((date) => (
-        		<CalenderBox date={date} completed={result[date-1] || []}/>
+        		<CalenderBox key={date} date={date} completed={result[date-1] || []}/>
       		)
 					)}
       	</div>
       )}
 
-			{month==12 && (
+			{/* {month==12 && (
         <div className='grid grid-cols-7 gap-2'>
           {dates.map((date) => (
         		<CalenderBox date={date} completed={result[date-1] || []}/>
@@ -97,7 +103,7 @@ const CalenderMain = ({month}) => {
           <CalenderBox />
           <CalenderBox />
       	</div>
-      )}
+      )} */}
 
 
     </div>
