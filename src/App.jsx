@@ -1,17 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RandingPage from "./pages/RandingPage";
-import RoutineToday from './pages/RoutineToday'
+import CalenderMain from './pages/CalenderMain';
+import Profile from './components/Profile';
+import Main from './pages/Main';
+import RoutineToday from './pages/RoutineToday';
+import PageNameBox from './components/PageNameBox';
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RandingPage />} />
-        <Route path="/routinetoday" element={<RoutineToday />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <div>
+        {/* <RandingPage />
+        <CalenderMain month={11}/> */}
+        {/* <Main /> */}
+        {/* <RoutineToday /> */}
+        {/* <PageNameBox page={0}/> */}
+        </div>
+    );
 };
 
 export default App;
