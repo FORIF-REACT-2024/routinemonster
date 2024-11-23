@@ -12,14 +12,13 @@ import CalenderMain from "./pages/CalenderMain.jsx";
 import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
 import LoginCompletePage from "./pages/LoginCompletePage.jsx";
-import CalendarBox from "./components/CalenderBox.jsx";
 import Main from "./pages/Main.jsx";
-import RadningPage from "./pages/RandingPage.jsx";
+import LadningPage from "./pages/LandingPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <RadningPage />
+    element: <LadningPage />
   },
   {
     path: "/LoginCompletePage",
