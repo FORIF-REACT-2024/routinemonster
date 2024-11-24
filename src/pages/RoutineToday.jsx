@@ -1,11 +1,10 @@
 import React from 'react';
-import Profile from '../components/Profile';
 import CommentInput from '../components/CommentInput';
 import TodayRoutineItem from '../components/TodayRoutineItem';
 import { Checkbox } from '@mui/material';
 
 const RoutineToday = () => {
-	const routines = Array(7).fill({
+	const routines = Array(6).fill({
 		type: '운동',
 		description: '5km 실적 앞고 달리기',
 		startDate: '2024-11-01',
@@ -19,8 +18,8 @@ const RoutineToday = () => {
 	return (
 		<div>
 			{/* 메인 컨텐츠 컨테이너 */}
-			<div className="max-w-5xl mx-auto">
-				<div className="flex gap-4">
+			<div className="border-2 border-blue-200 rounded-2xl bg-white p-6 w-full max-w-2xl">
+				<div className="space-y-4">
 					{/* 오른쪽 루틴 섹션 */}
 					<div className="flex-1">
 						{/* 루틴 리스트 */}

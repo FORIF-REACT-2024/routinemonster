@@ -31,7 +31,7 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
     const startDay = new Date(startDate).getDay();
     const endDay = new Date(endDate).getDay();
     return (
-        <div className="w-[850px] h-[60px] bg-white border border-blue-200 rounded-lg flex items-center p-2">
+        <div className="w-[900px] h-[60px] bg-white border border-blue-200 rounded-lg flex items-center p-2">
             {/* 카테고리 표시 */}
             <CategoryBox category={category} />
 
@@ -43,12 +43,12 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
             {/* 기간, 횟수, 달성률 표시 */}
             <div className="flex ml-auto">
                 {/* 기간 표시 */}
-                <div className="w-[300px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
+                <div className="w-[200px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
                     {startDate}({getDayName(startDay)})~{endDate}({getDayName(endDay)})
                 </div>
 
                 {/* 횟수 표시 */}
-                <div className="w-[83px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
+                <div className="w-[60px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
                     {frequency}회 이상
                 </div>
 
