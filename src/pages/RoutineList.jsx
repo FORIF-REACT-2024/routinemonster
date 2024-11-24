@@ -14,7 +14,11 @@ const RoutineList = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const itemsPerPage = 6; // 한 페이지당 아이템 개수
+    const handleDeleteRoutine = (deletedRoutineId) => {
+        setRoutines((prevRoutines) =>
+            prevRoutines.filter((routine) => routine.id !== deletedRoutineId)
+        );
+    };
 
     useEffect(() => {
         const fetchRoutines = async () => {
@@ -39,7 +43,7 @@ const RoutineList = () => {
                     setRoutines(mergedObjectives); // 합쳐진 배열로 루틴 설정
                     setTotalPages(response.data.data.totalPages || 1);
                 } else {
-                    throw new Error(response.data.message || '루틴 불러오기 실패');
+                    throw new Error(response.data.message || '루틴 불러오기 실패🥲');
                 }
             } catch (err) {
                 setError(err.message || 'Something went wrong');
@@ -84,11 +88,14 @@ const RoutineList = () => {
                                 frequency={routine.times}
                                 achievement={routine.completedTimes / routine.times}
                             />
-                            <DeleteButton routineId={routine.id} />
+                            <DeleteButton
+                                routineId={routine.id}
+                                onDelete={handleDeleteRoutine}
+                            />
                         </div>
                     ))
                 ) : (
-                    <p className="text-center text-gray-500">등록된 루틴이 없습니다. 새로운 루틴을 추가하세요!</p>
+                    <p className="text-center text-gray-500">등록된 루틴이 없습니다. 새로운 루틴을 추가하세요❗</p>
                 )}
             </div>
 
