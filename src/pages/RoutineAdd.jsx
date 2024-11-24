@@ -60,9 +60,9 @@ const RoutineAdd = () => {
     };
 
     return (
-        <div className="border-2 border-blue-200 rounded-2xl bg-white p-6 w-full max-w-2xl">
-            <div className="mb-6 border-blue-200 border-2 rounded-lg py-4">
-                <h2 className="text-3xl font-bold text-center">🐈 루틴 추가 🐈</h2>
+        <div>
+            <div>
+                <h2 className="text-3xl font-bold text-center p-6">🐈 루틴 추가 🐈</h2>
             </div>
             <div className="space-y-6 border-2 border-blue-200 rounded-2xl p-6 text-lg">
                 <div className="flex items-center mb-4">
