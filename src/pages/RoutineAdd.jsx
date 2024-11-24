@@ -28,6 +28,7 @@ const RoutineAdd = () => {
             alert("모든 필드를 입력해주세요🤔");
             return;
         }
+    
         const payload = {
             title,
             category: selectedCategory,
@@ -35,12 +36,12 @@ const RoutineAdd = () => {
             endDate: endDate.toISOString().split('T')[0],
             times,
         };
-        
-        console.log(payload);
+    
+        console.log("Payload:", payload); // payload 확인
+    
         setIsSubmitting(true);
         try {
-            const response = await axios.post('http://localhost:3000/api/routine/write', payload, {withCredentials: true,});
-            
+            const response = await axios.post('http://localhost:3000/api/routine/write', payload, { withCredentials: true });
             if (response.status === 200) {
                 alert("루틴 추가 완료✔️");
                 navigate('/routine-lists');
@@ -52,6 +53,7 @@ const RoutineAdd = () => {
             setIsSubmitting(false);
         }
     };
+    
 
     const handleAddCancel = () => {
         navigate('/routine-lists'); // 취소 버튼 클릭 시 페이지 이동
