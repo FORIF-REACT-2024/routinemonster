@@ -1,23 +1,27 @@
 function CategoryBox({ category }) {
     let borderColor;
+    let categoryName;
     switch (category) {
-        case "운동":
-            borderColor = "border-yellow-200";
+        case 'exercise':
+            borderColor = 'border-yellow-200';
+            categoryName = '운동';
             break;
-        case "독서":
-            borderColor = "border-purple-200";
+        case 'reading':
+            borderColor = 'border-purple-200';
+            categoryName = '독서';
             break;
-        case "공부":
-            borderColor = "border-green-200";
+        case 'study':
+            borderColor = 'border-green-200';
+            categoryName = '공부';
             break;
         default:
-            borderColor = "border-blue-200";
+            borderColor = 'border-blue-200';
             break;
     }
 
     return (
         <div className={`w-[80px] h-[40px] bg-white border-4 ${borderColor} text-black flex items-center justify-center rounded-lg mr-10`}>
-            {category}
+            {categoryName}
         </div>
     );
 }
@@ -54,7 +58,7 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
 
                 {/* 달성률 표시 */}
                 <div className="w-[35px] h-[35px] bg-blue-200 text-black rounded-full flex items-center justify-center">
-                    {achievement*100}%
+                    {Math.floor(achievement * 100)}%
                 </div>
             </div>
         </div>
