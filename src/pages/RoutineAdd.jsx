@@ -68,21 +68,22 @@ const RoutineAdd = () => {
                 <div className="flex items-center mb-4">
                     <label className="font-medium w-24 mr-4">카테고리</label>
                     <div className="flex gap-2">
-                        <CategoryBox
-                            category={1}
-                            selectedCategory={selectedCategory}
-                            onClick={handleCategoryClick}
-                        />
-                        <CategoryBox
-                            category={2}
-                            selectedCategory={selectedCategory}
-                            onClick={handleCategoryClick}
-                        />
-                        <CategoryBox
-                            category={3}
-                            selectedCategory={selectedCategory}
-                            onClick={handleCategoryClick}
-                        />
+                    <CategoryBox
+                        category="reading" // 문자열로 전달
+                        selectedCategory={selectedCategory}
+                        onClick={handleCategoryClick}
+                    />
+                    <CategoryBox
+                        category="exercise" // 문자열로 전달
+                        selectedCategory={selectedCategory}
+                        onClick={handleCategoryClick}
+                    />
+                    <CategoryBox
+                        category="study" // 문자열로 전달
+                        selectedCategory={selectedCategory}
+                        onClick={handleCategoryClick}
+                    />
+
                     </div>
                 </div>
                 <div className="flex items-center mb-4">
