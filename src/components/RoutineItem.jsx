@@ -1,23 +1,27 @@
 function CategoryBox({ category }) {
     let borderColor;
+    let categoryName;
     switch (category) {
-        case "운동":
-            borderColor = "border-yellow-200";
+        case 'exercise':
+            borderColor = 'border-yellow-200';
+            categoryName = '운동';
             break;
-        case "독서":
-            borderColor = "border-purple-200";
+        case 'reading':
+            borderColor = 'border-purple-200';
+            categoryName = '독서';
             break;
-        case "공부":
-            borderColor = "border-green-200";
+        case 'study':
+            borderColor = 'border-green-200';
+            categoryName = '공부';
             break;
         default:
-            borderColor = "border-blue-200";
+            borderColor = 'border-blue-200';
             break;
     }
 
     return (
         <div className={`w-[80px] h-[40px] bg-white border-4 ${borderColor} text-black flex items-center justify-center rounded-lg mr-10`}>
-            {category}
+            {categoryName}
         </div>
     );
 }
@@ -31,7 +35,7 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
     const startDay = new Date(startDate).getDay();
     const endDay = new Date(endDate).getDay();
     return (
-        <div className="w-[850px] h-[60px] bg-white border border-blue-200 rounded-lg flex items-center p-2">
+        <div className="w-[900px] h-[60px] bg-white border border-blue-200 rounded-lg flex items-center p-2">
             {/* 카테고리 표시 */}
             <CategoryBox category={category} />
 
@@ -43,18 +47,18 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
             {/* 기간, 횟수, 달성률 표시 */}
             <div className="flex ml-auto">
                 {/* 기간 표시 */}
-                <div className="w-[300px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
+                <div className="w-[200px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
                     {startDate}({getDayName(startDay)})~{endDate}({getDayName(endDay)})
                 </div>
 
                 {/* 횟수 표시 */}
-                <div className="w-[83px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
+                <div className="w-[60px] h-[35px] bg-gray-200 text-black rounded-full mr-2 flex items-center justify-center">
                     {frequency}회 이상
                 </div>
 
                 {/* 달성률 표시 */}
                 <div className="w-[35px] h-[35px] bg-blue-200 text-black rounded-full flex items-center justify-center">
-                    {achievement*100}%
+                    {Math.floor(achievement * 100)}%
                 </div>
             </div>
         </div>

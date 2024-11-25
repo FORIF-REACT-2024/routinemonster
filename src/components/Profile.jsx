@@ -6,20 +6,24 @@ const Profile = ({
     nickname = '닉네임',
     profileImage,
     onMyPagePress,
+    setData
 }) => {
     const navigate = useNavigate();
     const handleTodayRoutine = () => {
+        setData(0);
         navigate('/today');
     }
     const handleCalender = () => {
+        setData(1);
         navigate('/Calender');
     }
     const handleRoutineList = () => {
+        setData(3);
         navigate('/routine-lists');
     }
     return (
         // w-64 → w-full로 변경하고 전체 padding 증가
-        <div className="flex flex-col p-8 border-2 border-blue-200 rounded-2xl bg-white w-full">
+        <div className="flex flex-col p-8 border-2 border-blue-400 rounded-2xl bg-white w-64">
         {/* 날짜 표시 - 크기와 패딩 증가 */}
         <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
             <span className="text-3xl font-bold">{date}</span>
@@ -72,7 +76,7 @@ const Profile = ({
                 onClick={handleRoutineList}
                 className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
             >
-                루틴 목표
+                루틴 목록
             </button>
             </div>
         </div>

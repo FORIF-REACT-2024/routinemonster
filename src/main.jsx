@@ -11,36 +11,49 @@ import "react-toastify/dist/ReactToastify.css";
 import CalenderMain from "./pages/CalenderMain.jsx";
 import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
-import SignupCompletePage from "./pages/SignupCompletePage.jsx";
+import LoginCompletePage from "./pages/LoginCompletePage.jsx";
+import Main from "./pages/Main.jsx";
+import LadningPage from "./pages/LandingPage.jsx";
 
 const router = createBrowserRouter([
   {
+    path: "/login",
+    element: <LadningPage />
+  },
+  {
+    path: "/LoginCompletePage",
+    element: <LoginCompletePage />,
+  },
+  { 
     path: "/",
-    element: <App />,
-  },
-  {
-    path: "/easteregg",
-    element: <Easteregg />,
-  },
-  {
-    path: "/today",
-    element: <RoutineToday />,
-  },
-  {
-    path: "/Calender",
-    element: <CalenderMain />,
-  },
-  {
-    path: "/Add",
-    element: <RoutineAdd />,
-  },
-  {
-    path: "/routine-lists",
-    element: <RoutineList />,
-  },
-  {
-    path: "/SignupCompletePage",
-    element: <SignupCompletePage />,
+    element: <Main />, // Main을 고정 레이아웃으로 사용
+    children: [
+      {
+        path: "/",
+        element: <RoutineToday />,
+      },
+      
+      {
+        path: "/easteregg",
+        element: <Easteregg />,
+      },
+      {
+        path: "/today",
+        element: <RoutineToday />,
+      },
+      {
+        path: "/Calender",
+        element: <CalenderMain month={11} />,
+      },
+      {
+        path: "/Add",
+        element: <RoutineAdd />,
+      },
+      {
+        path: "/routine-lists",
+        element: <RoutineList />,
+      },
+    ],
   },
 ]);
 

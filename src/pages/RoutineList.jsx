@@ -1,127 +1,114 @@
-import React, { useState } from 'react';
-import Profile from '../components/Profile';
-import RoutineItem from '../components/RoutineItem';
-import OngoingButton from '../components/OngoingButton';
-import DeleteButton from '../components/DeleteButton';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import RoutineItem from "../components/RoutineItem";
+import DeleteButton from "../components/DeleteButton";
 
 const RoutineList = () => {
-    const routines = Array(30).fill({
-        type: '운동',
-        description: '5km 실적 앞고 달리기',
-        startDate: '2024-11-01',
-        endDate: '2024-11-19',
-        frequency: '3',
-        status: 'ongoing'
-    });
+    const [routines, setRoutines] = useState([]); // 루틴 목록
+    const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-    const itemsPerPage = 7;
-    const totalPages = Math.ceil(routines.length / itemsPerPage);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [statusFilter, setStatusFilter] = useState('ongoing');
+    // 전체 루틴 목록 조회
+    const fetchRoutines = async () => {
+        setLoading(true);
+        setError(null);
 
-    const filteredRoutines = routines.filter(routine => routine.status === statusFilter);
+        try {
+            const response = await axios.get(
+                `http://localhost:3000/api/routine/${currentPage}`,
+                { withCredentials: true }
+            );
 
-    const currentRoutines = filteredRoutines.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
+            const { success, message, data } = response.data;
 
+            if (success) {
+                setRoutines(data.routineList || []); // 루틴 목록 업데이트
+                setTotalPages(data.totalPages || 1); // 전체 페이지 수 업데이트
+            } else {
+                throw new Error(message || "루틴 조회 실패🥲");
+            }
+        } catch (err) {
+            setError(err.message || "루틴 조회 중 문제가 발생했습니다😫");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchRoutines();
+    }, [currentPage]);
+
+    // 페이지 변경 처리
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
     };
 
-    const handleStatusChange = (status) => {
-        setStatusFilter(status);
-        setCurrentPage(1);
-    };
-
-    const navigate = useNavigate();
-
+    // 루틴 추가 페이지로 이동
     const handleAddRoutine = () => {
-        navigate('/Add');
+        navigate("/Add");
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
-        <div className="min-h-screen bg-blue-50 p-4">
-            <div className="max-w-5xl mx-auto mb-4">
-                <h1 className="text-4xl font-bold">Routine Monster</h1>
+        <div className="border-2 border-blue-200 rounded-2xl bg-white p-6 w-full max-w-2xl">
+            {/* 루틴 목록 */}
+            <div className="space-y-4">
+                {Array.isArray(routines) && routines.length > 0 ? (
+                    routines.map((routine) => (
+                        <div key={routine.id} className="flex justify-between items-center space-x-4">
+                            <RoutineItem
+                                category={routine.category}
+                                title={routine.title}
+                                startDate={routine.startDate.split("T")[0]}
+                                endDate={routine.endDate.split("T")[0]}
+                                frequency={routine.times}
+                                achievement={routine.completedTimes / routine.times}
+                            />
+                            <DeleteButton
+                                routineId={routine.id}
+                                onDelete={fetchRoutines} // 삭제 후 목록 새로고침
+                            />
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-center text-gray-500">
+                        등록된 루틴이 없습니다. 새로운 루틴을 추가하세요❗
+                    </p>
+                )}
             </div>
 
-            <div className="max-w-5xl mx-auto">
-                <div className="flex gap-4">
-                    <div className="w-[360px]">
-                        <Profile 
-                            date="2024.10.05.토"
-                            nickname="닉네임"
-                            onTodayRoutinePress={() => {}}
-                            onCalendarPress={() => {}}
-                            onMyPagePress={() => {}}
-                            onRoutineGoalPress={() => {}}
-                        />
-                    </div>
+            {/* 페이지네이션 */}
+            <Stack spacing={2} className="mt-4" alignItems="center">
+                <Pagination
+                    count={totalPages}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    color="primary"
+                    showFirstButton
+                    showLastButton
+                />
+            </Stack>
 
-                    <div className="flex-1">
-                        <div className="border-2 border-blue-200 rounded-2xl bg-white p-6">
-                            <div className="mb-6">
-                                <h2 className="text-3xl font-bold text-center">🌼 루틴 목록 🌼</h2>
-                            </div>
-
-                            <div className="flex space-x-4 mb-4">
-                                <OngoingButton 
-                                    type="ongoing" 
-                                    onClick={handleStatusChange} 
-                                    selected={statusFilter === 'ongoing'} 
-                                />
-                                <OngoingButton 
-                                    type="completed" 
-                                    onClick={handleStatusChange} 
-                                    selected={statusFilter === 'completed'} 
-                                />
-                                <OngoingButton 
-                                    type="upcoming" 
-                                    onClick={handleStatusChange} 
-                                    selected={statusFilter === 'upcoming'} 
-                                />
-                            </div>
-
-                            <div className="space-y-4">
-                                {currentRoutines.map((routine, index) => (
-                                    <div key={index} className="flex justify-between items-center space-x-4"> 
-                                    <RoutineItem
-                                        type={routine.type}
-                                        description={routine.description}
-                                        period={routine.period}
-                                        frequency={routine.frequency}
-                                    />
-                                    <DeleteButton />
-                                </div>
-                                ))}
-                            </div>
-
-                            <Stack spacing={2} className="mt-4" alignItems="center">
-                                <Pagination
-                                    count={totalPages} 
-                                    page={currentPage} 
-                                    onChange={handlePageChange} 
-                                    color="primary" 
-                                    showFirstButton 
-                                    showLastButton 
-                                />
-                            </Stack>
-
-                            <div className="mt-4 text-center">
-                                <button 
-                                    className="px-6 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
-                                    onClick={handleAddRoutine}>
-                                        추가하기
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {/* 루틴 추가 버튼 */}
+            <div className="mt-4 text-center">
+                <button
+                    className="px-6 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+                    onClick={handleAddRoutine}>
+                    추가하기
+                </button>
             </div>
         </div>
     );

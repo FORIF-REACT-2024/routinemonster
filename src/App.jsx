@@ -1,13 +1,20 @@
 import React from 'react';
-import RoutineList from './pages/RoutineList';
-import RandingPage from "./pages/RandingPage";
+import CalenderMain from './pages/CalenderMain';
+import Profile from './components/Profile';
+import Main from './pages/Main';
+import RoutineToday from './pages/RoutineToday';
+import PageNameBox from './components/PageNameBox';
 
 const App = () => {
-  return (
-    <div>
-      <RandingPage />
-    </div>
-  );
+    return (
+        <div>
+        {/* <RandingPage />
+        <CalenderMain month={11}/> */}
+        {/* <Main /> */}
+        {/* <RoutineToday /> */}
+        {/* <PageNameBox page={0}/> */}
+        </div>
+    );
 };
 
 export default App;
