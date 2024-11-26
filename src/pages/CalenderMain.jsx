@@ -3,8 +3,11 @@ import axios from "axios";
 import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
 import { useEffect, useState } from "react";
+import { Link, useParams } from 'react-router-dom';
 
-const CalenderMain = ({ month }) => {
+const CalenderMain = () => {
+  const { monthprop } = useParams();
+  const month = parseInt(monthprop, 10);
   const year = 2024;
   const endDate = month == 11 ? 30 : 31;
   const monthEng = month == 11 ? 'November' : 'December'
@@ -17,6 +20,7 @@ const CalenderMain = ({ month }) => {
 
   const fetchCompletedRoutines = async () => {
     try {
+      setLoading(true);
       console.log('데이터 가져올게요');
       const response = await axios.get(
         "http://localhost:3000/api/date/calendar", {
@@ -63,9 +67,9 @@ const CalenderMain = ({ month }) => {
   return (
     <div className='flex flex-col justify-center items-center'>
       <div className='flex'>
-        <p className='text-5xl'>&lt;</p>
+        <Link to="/Calender/11" className='text-5xl'>&lt;</Link>
         <h2 className='text-5xl px-10'>{monthEng}</h2>
-        <p className='text-5xl'>&gt;</p>
+        <Link to="/Calender/12" className='text-5xl'>&gt;</Link>
       </div>
 
       <div className='flex gap-2 pt-5 pb-2'>
@@ -92,17 +96,17 @@ const CalenderMain = ({ month }) => {
       	</div>
       )}
 
-			{/* {month==12 && (
+			{month==12 && (
         <div className='grid grid-cols-7 gap-2'>
           {dates.map((date) => (
-            <CalenderBox date={date} completed={result[date - 1] || []} />
+            <CalenderBox key={date} date={date} completed={result[date - 1] || []} />
           )
           )}
           <CalenderBox />
           <CalenderBox />
           <CalenderBox />
       	</div>
-      )} */}
+      )}
 
 
     </div>

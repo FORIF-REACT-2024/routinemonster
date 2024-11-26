@@ -42,8 +42,8 @@ const router = createBrowserRouter([
         element: <RoutineToday />,
       },
       {
-        path: "/Calender",
-        element: <CalenderMain month={11} />,
+        path: "/Calender/:monthprop",
+        element: <CalenderMain />,
       },
       {
         path: "/Add",

@@ -5,7 +5,7 @@ const CalendarBox = ({ date, completed }) => {
     switch (category) {
       case 'reading':
         return 'bg-purple-400';
-      case 'workout':
+      case 'exercise':
         return 'bg-yellow-400';
       case 'study':
         return 'bg-green-400';
