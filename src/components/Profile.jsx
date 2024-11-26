@@ -15,7 +15,7 @@ const Profile = ({
     }
     const handleCalender = () => {
         setData(1);
-        navigate('/Calender');
+        navigate('/Calender/11');
     }
     const handleRoutineList = () => {
         setData(3);
