@@ -1,12 +1,11 @@
 import React from 'react';
 import CalenderMain from './pages/CalenderMain';
+import LandingPage from './pages/LandingPage';
 
 const App = () => {
   return (
     <div>
-      {/* <RandingPage /> */}
-      {/* <CalendarBoxTest month={11} date={1} /> */}
-      <CalenderMain month={11} />
+      <LandingPage />
     </div>
   );
 };

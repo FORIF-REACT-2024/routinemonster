@@ -2,6 +2,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 
 
@@ -11,6 +12,11 @@ const GoogleLoginButton = () => {
 
     const handleSuccess = async (res) => {
         try {
+            const decodedToken = jwtDecode(res.credential); // Google에서 반환된 JWT 토큰 디코드
+            const { name, email, picture } = decodedToken; // 사용자 정보 추출
+
+            console.log("유저 정보:", { name, email, picture });
+
             const response = await axios.post(
                 "http://localhost:3000/api/users/signin",
                 {
@@ -35,11 +41,13 @@ const GoogleLoginButton = () => {
             );
 
             console.log("세션 데이터:", sessionResponse.data);
+
+            navigate("/LoginCompletePage", { state: { name, email, picture } });
         } catch (err) {
             console.error("백엔드 전송 오류:", err);
             console.error("에러 디버그 정보:", err.response?.data || "응답 없음");
         }
-        navigate("/LoginCompletePage");
+
     };
 
 
