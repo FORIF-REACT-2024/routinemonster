@@ -44,5 +44,4 @@ function CategoryButton({ category, selectedCategory, onClick }) {
 export default CategoryButton;
 
 
-
 //카테고리 1: 독서 2: 운동 3: 공부

@@ -1,6 +1,4 @@
 const CalendarBox = ({ date, completed }) => {
-	console.log(completed);
-
 	const getColor = (category) => {
     switch (category) {
       case 'reading':
