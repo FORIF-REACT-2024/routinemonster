@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useOutletContext } from 'react-router-dom';
 
 const MyPage = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { darkMode } = useOutletContext();
 
   useEffect(() => {
     // 사용자 정보를 백엔드에서 가져오기
@@ -67,9 +69,9 @@ const MyPage = () => {
       {/* Profile Information Box */}
       <div className="w-[400px] mx-auto rounded-2xl border border-blue-200 p-6 mb-8">
         <div className="grid grid-cols-2 gap-4">
-          <div className="text-xl text-black">닉네임</div>
+          <div className={`text-xl ${darkMode ? 'text-white' : 'text-black'}`}>닉네임</div>
           <div className="text-xl font-medium">{name}</div>
-          <div className="text-xl text-black">이메일</div>
+          <div className={`text-xl ${darkMode ? 'text-white' : 'text-black'}`}>이메일</div>
           <div className="text-xl font-medium">{email}</div>
         </div>
       </div>

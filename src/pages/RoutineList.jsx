@@ -5,6 +5,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import RoutineItem from "../components/RoutineItem";
 import DeleteButton from "../components/DeleteButton";
+import { useOutletContext } from 'react-router-dom';
 
 const RoutineList = () => {
     const [routines, setRoutines] = useState([]); // 루틴 목록
@@ -13,6 +14,7 @@ const RoutineList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const { darkMode } = useOutletContext();
 
     // 전체 루틴 목록 조회
     const fetchRoutines = async () => {
@@ -76,10 +78,12 @@ const RoutineList = () => {
                                 endDate={routine.endDate.split("T")[0]}
                                 frequency={routine.times}
                                 achievement={routine.completedTimes / routine.times}
+                                darkMode={darkMode}
                             />
                             <DeleteButton
                                 routineId={routine.id}
                                 onDelete={fetchRoutines} // 삭제 후 목록 새로고침
+                                darkMode={darkMode}
                             />
                         </div>
                     ))
@@ -105,7 +109,7 @@ const RoutineList = () => {
             {/* 루틴 추가 버튼 */}
             <div className="mt-4 text-center">
                 <button
-                    className="px-6 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+                    className={`px-6 py-2 ${darkMode ? 'bg-gray-700 text-blue-50 hover:bg-gray-600' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'} rounded-md transition-colors`}
                     onClick={handleAddRoutine}>
                     추가하기
                 </button>

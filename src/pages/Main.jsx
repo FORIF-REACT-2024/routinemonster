@@ -48,7 +48,7 @@ const Main = () => {
           <PageNameBox page={page} />
 
           <div className="p-2">
-            <Outlet />
+            <Outlet context={{ darkMode }} />
           </div>
         </div>
       </div>

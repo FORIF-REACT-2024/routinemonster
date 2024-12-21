@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-function DeleteButton({ routineId, onDelete }) {
+function DeleteButton({ routineId, onDelete, darkMode }) {
     const handleDelete = async () => {
         if (!window.confirm("루틴을 삭제하시겠습니까?")) return;
 
@@ -31,7 +31,7 @@ function DeleteButton({ routineId, onDelete }) {
 
     return (
         <button
-            className="bg-red-200 text-black font-medium w-10 h-7 rounded-lg"
+            className={`${darkMode ? 'bg-[#D07A8B]' : 'bg-red-200'} text-black font-medium w-10 h-7 rounded-lg`}
             onClick={handleDelete}
         >
             삭제
