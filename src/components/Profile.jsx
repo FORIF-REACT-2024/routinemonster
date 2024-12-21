@@ -17,6 +17,10 @@ const Profile = ({
         setData(1);
         navigate('/Calender/11');
     }
+    const handleMyPage = () => {
+        setData(2);
+        navigate('/mypage');
+    }
     const handleRoutineList = () => {
         setData(3);
         navigate('/routine-lists');
@@ -66,7 +70,7 @@ const Profile = ({
             </button>
 
             <button 
-                onClick={onMyPagePress}
+                onClick={handleMyPage}
                 className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
             >
                 마이페이지
