@@ -21,7 +21,6 @@ const Main = () => {
 
   return (
     <div className={`flex flex-col items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-blue-100 text-black'}`}>
-      {/* 상단 영역 */}
       <div className="flex items-center justify-center w-full pb-6">
         <p className="text-5xl">Routine Monster</p>
         <button
@@ -32,10 +31,9 @@ const Main = () => {
         </button>
       </div>
 
-      {/* 아래 박스 */}
       <div className="flex">
         <div className="pr-3">
-          <Profile setData={setPage} darkMode={darkMode} /> {/* setPage를 props로 전달 */}
+          <Profile setData={setPage} darkMode={darkMode} />
         </div>
 
         <div className={`flex flex-col items-center w-[750px] border-2 ${darkMode ? 'border-blue-400 bg-gray-800' : 'border-blue-400 bg-white'} rounded-2xl`}>
