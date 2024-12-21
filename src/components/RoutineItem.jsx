@@ -20,7 +20,7 @@ function CategoryBox({ category }) {
     }
 
     return (
-        <div className={`w-[80px] h-[40px] bg-white border-4 ${borderColor} text-black flex items-center justify-center rounded-lg mr-10`}>
+        <div className={`w-[80px] h-[40px] border-4 ${borderColor} flex items-center justify-center rounded-lg mr-10`}>
             {categoryName}
         </div>
     );
