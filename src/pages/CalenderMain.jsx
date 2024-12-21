@@ -4,6 +4,7 @@ import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
 import { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
+import IsLoggedIn from '../components/IsLoggedIn';
 
 const CalenderMain = () => {
   const { monthprop } = useParams();
@@ -21,14 +22,12 @@ const CalenderMain = () => {
   const fetchCompletedRoutines = async () => {
     try {
       setLoading(true);
-      console.log('데이터 가져올게요');
       const response = await axios.get(
         "http://localhost:3000/api/date/calendar", {
         params: { year, month },
         withCredentials: true,
       }
       );
-      console.log("캘린더 데이터 가져오기 성공:", response.data);
       setData(response.data);
     } catch (err) {
       setError('오류발생!!!!끄ㅇ아아악');
@@ -53,7 +52,6 @@ const CalenderMain = () => {
         }
       });
       setResult(result);
-      console.log('Result:', result);
     }
   }, [data]);
 
@@ -102,6 +100,7 @@ const CalenderMain = () => {
             <CalenderBox key={date} date={date} completed={result[date - 1] || []} />
           )
           )}
+          <CalenderBox />
           <CalenderBox />
           <CalenderBox />
           <CalenderBox />
