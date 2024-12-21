@@ -107,7 +107,7 @@ const RoutineToday = () => {
 
     return (
         <div>
-            <div className="border-2 border-blue-200 rounded-2xl bg-white p-6 w-full max-w-2xl">
+            <div className="rounded-2xl p-6 w-full max-w-2xl">
                 <div className="space-y-4">
                     <div className="flex-1">
                         <div className="space-y-4">
