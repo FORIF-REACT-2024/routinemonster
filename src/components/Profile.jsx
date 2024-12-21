@@ -55,7 +55,7 @@ const Profile = ({ setData, darkMode }) => {
                                 <div className="w-32 h-32 rounded-full bg-gray-200" />
                             )}
                         </div>
-                        <span className="text-2xl font-bold mt-4">
+                        <span className="w-[140px] text-2xl font-bold mt-4 truncate">
                             {localStorage.getItem('userName') || '사용자'}
                         </span>
                     </div>
