@@ -21,7 +21,7 @@ const Profile = ({ setData, darkMode }) => {
 
     const handleCalender = () => {
         setData(1);
-        navigate('/Calender/11');
+        navigate('/Calender/12');
     }
     const handleMyPage = () => {
         console.log('마이페이지 클릭, setData 호출 전:', 2);
@@ -49,10 +49,10 @@ const Profile = ({ setData, darkMode }) => {
                                 <img
                                     src={localStorage.getItem('userPicture')}
                                     alt="프로필"
-                                    className="w-32 h-32 rounded-full object-cover"
+                                    className="w-[120px] h-[120px] rounded-full object-cover"
                                 />
                             ) : (
-                                <div className="w-32 h-32 rounded-full bg-gray-200" />
+                                <div className="w-[120px] h-[120px] rounded-full bg-gray-200" />
                             )}
                         </div>
                         <span className="w-[140px] text-2xl font-bold mt-4 truncate">
