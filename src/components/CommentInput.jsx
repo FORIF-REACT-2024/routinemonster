@@ -3,7 +3,7 @@ const CommentInput = ({ value, onChange }) => {
       <form>
           <div>
               <div className="flex items-center bg-blue-50 rounded-3xl p-4">
-                  <label className="flex items-center w-full">
+                  <label className="text-black flex items-center w-full">
                       오늘의 코멘트
                       <input 
                           id="commentInput"

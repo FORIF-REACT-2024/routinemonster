@@ -63,7 +63,7 @@ const RoutineList = () => {
     }
 
     return (
-        <div className="border-2 border-blue-200 rounded-2xl bg-white p-6 w-full max-w-2xl">
+        <div className="rounded-2xl p-6 w-full max-w-2xl">
             {/* 루틴 목록 */}
             <div className="space-y-4">
                 {Array.isArray(routines) && routines.length > 0 ? (

@@ -24,7 +24,7 @@ function CategoryBox({ category }) {
     }
 
     return (
-        <div className={`w-[80px] h-[40px] bg-white border-4 ${borderColor} text-black flex items-center justify-center rounded-lg mr-10`}>
+        <div className={`w-[80px] h-[40px] border-4 ${borderColor} flex items-center justify-center rounded-lg mr-10`}>
             {displayText}
         </div>
     );
@@ -38,7 +38,7 @@ function getDayName(day) {
 // props로 데이터를 받아서 표시만 하는 역할
 export default function TodayRoutineItem({ routine }) {
     return (
-        <div className="w-[900px] h-[60px] bg-white border border-blue-200 rounded-lg flex items-center p-2">
+        <div className="w-[900px] h-[60px] border border-blue-200 rounded-lg flex items-center p-2">
             <CategoryBox category={routine.category} />
 
             <p className="text-lg font-semibold">
