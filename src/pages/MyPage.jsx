@@ -36,6 +36,10 @@ const MyPage = () => {
     }
   };
 
+  const handleSecession = async () => {
+    alert("어딜 탈퇴하려고 ㅋㅋㅋ");
+  }
+
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>{error}</div>;
 
@@ -71,10 +75,10 @@ const MyPage = () => {
       </div>
       {/* Action Buttons */}
       <div className="flex justify-center gap-4">
-        <button className="px-6 py-2 bg-blue-100 rounded-xl text-black">
+        <button onClick={handleLogout} className="px-6 py-2 bg-blue-100 rounded-xl text-black">
           로그아웃
         </button>
-        <button className="px-6 py-2 bg-red-300 rounded-xl text-black">
+        <button onClick={handleSecession} className="px-6 py-2 bg-red-300 rounded-xl text-black">
           폰탈퇴
         </button>
       </div>
