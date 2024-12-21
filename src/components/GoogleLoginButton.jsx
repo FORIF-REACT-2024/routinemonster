@@ -14,6 +14,9 @@ const GoogleLoginButton = () => {
         try {
             const decodedToken = jwtDecode(res.credential); // Google에서 반환된 JWT 토큰 디코드
             const { name, email, picture } = decodedToken; // 사용자 정보 추출
+            localStorage.setItem("userName", name);
+            localStorage.setItem("userEmail", email);
+            localStorage.setItem("userPicture", picture);
 
             console.log("유저 정보:", { name, email, picture });
 
