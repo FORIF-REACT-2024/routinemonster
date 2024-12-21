@@ -37,7 +37,7 @@ const Profile = ({ setData, darkMode }) => {
 
     return (
         <div className={`flex flex-col p-8 border-2 ${darkMode ? 'border-blue-400 bg-gray-800' : 'border-blue-400 bg-white'} rounded-2xl w-64`}>
-            <div className={`${darkMode ? 'text-white bg-gray-600':'text-black bg-blue-50'} py-4 px-8 rounded-2xl text-center mb-8`}>
+            <div className={`${darkMode ? 'text-white bg-slate-700':'text-black bg-blue-50'} py-4 px-8 rounded-2xl text-center mb-8`}>
                 <span className="text-2xl font-bold">{formattedDate}</span>
             </div>
 
@@ -63,28 +63,28 @@ const Profile = ({ setData, darkMode }) => {
                     <div className="flex flex-col gap-4 items-center">
                         <button
                             onClick={handleTodayRoutine}
-                            className={`w-36 py-3 ${darkMode ? 'text-white bg-gray-600 hover:bg-blue-300':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
+                            className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
                         >
                             오늘의 루틴
                         </button>
 
                         <button
                             onClick={handleCalender}
-                            className={`w-36 py-3 ${darkMode ? 'text-white bg-gray-600 hover:bg-blue-300':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
+                            className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
                         >
                             캘린더
                         </button>
 
             <button 
                 onClick={handleMyPage}
-                className={`w-36 py-3 ${darkMode ? 'text-white bg-gray-600 hover:bg-blue-300':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
+                className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
             >
                 마이페이지
             </button>
 
                         <button
                             onClick={handleRoutineList}
-                            className={`w-36 py-3 ${darkMode ? 'text-white bg-gray-600 hover:bg-blue-300':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
+                            className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
                         >
                             루틴 목록
                         </button>
