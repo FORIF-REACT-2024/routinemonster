@@ -67,7 +67,7 @@ const RoutineAdd = () => {
             <div className="space-y-6 border-2 border-blue-200 rounded-2xl p-6 text-lg">
                 <div className="flex items-center mb-4">
                     <label className="font-medium w-24 mr-4">카테고리</label>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 text-black">
                     <CategoryBox
                         category="reading" // 문자열로 전달
                         selectedCategory={selectedCategory}
@@ -90,17 +90,17 @@ const RoutineAdd = () => {
                     <label className="font-medium w-24 mr-4">루틴명</label>
                     <input
                         type="text"
-                        className="flex-1 border-2 border-blue-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="flex-1 border-2 border-blue-200 rounded-lg p-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
                         placeholder="루틴 이름을 입력하세요"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </div>
                 <div className="flex items-center mb-4">
-                    <label className="font-medium w-24 mr-4">시작날짜</label>
+                    <label className="font-medium w-24 mr-4 ">시작날짜</label>
                     <input
                         type="date"
-                        className="flex-1 border-2 border-blue-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="flex-1 border-2 border-blue-200 rounded-lg text-black p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                         onChange={(e) => setStartDate(new Date(e.target.value))}
                     />
                 </div>
@@ -108,14 +108,14 @@ const RoutineAdd = () => {
                     <label className="font-medium w-24 mr-4">종료날짜</label>
                     <input
                         type="date"
-                        className="flex-1 border-2 border-blue-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="flex-1 border-2 border-blue-200 rounded-lg text-black p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                         onChange={(e) => setEndDate(new Date(e.target.value))}
                     />
                 </div>
                 <div className="flex items-center">
                     <label className="font-medium w-24 mr-4">횟수</label>
                     <select
-                        className="flex-1 border-2 border-blue-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="flex-1 border-2 border-blue-200 rounded-lg text-black p-2 focus:outline-none focus:ring-2 focus:ring-blue-300"
                         value={times}
                         onChange={(e) => setTimes(Number(e.target.value))}
                     >
