@@ -30,8 +30,14 @@ const Profile = ({ onMyPagePress, setData, darkMode }) => {
     const handleCalender = () => {
         setData(1);
         navigate('/Calender/11');
-    };
-
+    }
+    const handleMyPage = () => {
+        console.log('마이페이지 클릭, setData 호출 전:', 2);
+        setData(2);
+        console.log('setData 호출 후, navigate 전');
+        navigate('/mypage');
+        console.log('navigate 호출 후');
+    }
     const handleRoutineList = () => {
         setData(3);
         navigate('/routine-lists');
@@ -77,12 +83,12 @@ const Profile = ({ onMyPagePress, setData, darkMode }) => {
                             캘린더
                         </button>
 
-                        <button
-                            onClick={onMyPagePress}
-                            className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
-                        >
-                            마이페이지
-                        </button>
+            <button 
+                onClick={handleMyPage}
+                className="w-36 py-3 bg-[#93C5FD] rounded-2xl text-2xl font-bold hover:bg-blue-100 transition-colors"
+            >
+                마이페이지
+            </button>
 
                         <button
                             onClick={handleRoutineList}

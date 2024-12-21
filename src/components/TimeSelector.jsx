@@ -11,16 +11,18 @@ export default function TimeSelector() {
     const times = Array.from({ length: 24 }, (_, i) => `${i}시`);
 
     return (
-        <select
-            value={selectedTime}
-            onChange={handleChange}
-            className="w-40 h-7 px-2 border border-blue-200 rounded-md text-lg"
-        >
-            {times.map((time) => (
-                <option key={time} value={time}>
-                    {time}
-                </option>
-            ))}
-        </select>
+        <div>
+            <select
+                value={selectedTime}
+                onChange={handleChange}
+                className="w-40 h-7 px-2 border border-blue-200 rounded-md text-lg"
+            >
+                {times.map((time) => (
+                    <option key={time} value={time}>
+                        {time}
+                    </option>
+                ))}
+            </select>
+        </div>
     );
 }
