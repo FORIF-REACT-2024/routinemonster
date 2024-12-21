@@ -10,12 +10,8 @@ const CalenderMain = () => {
   const { monthprop } = useParams();
   const month = parseInt(monthprop, 10);
   const year = 2024;
-  const endDate = month == 11 || 1 ? 30 : 31;
-  const {monthEng, prev, next} = month === 11 
-  ? {monthEng: 'November', prev: 11, next: 12}
-  : month === 12 
-  ? {monthEng: 'December', prev: 11, next: 1}
-  : {monthEng: 'January', prev: 12, next: 1};
+  const endDate = month == 11 ? 30 : 31;
+  const monthEng = month == 11 ? 'November' : 'December'
   const dates = Array.from({ length: endDate }, (_, index) => index + 1); //1 2 3.. 30 or 31 배열 생성
 
   const [data, setData] = useState(null);
@@ -66,13 +62,12 @@ const CalenderMain = () => {
     return <div>{error}</div>
   }
 
-
   return (
     <div className='flex flex-col justify-center items-center'>
       <div className='flex'>
-        <Link to={`/Calender/${prev}`} className='text-5xl'>&lt;</Link>
+        <Link to="/Calender/11" className='text-5xl'>&lt;</Link>
         <h2 className='text-5xl px-10'>{monthEng}</h2>
-        <Link to={`/Calender/${next}`} className='text-5xl'>&gt;</Link>
+        <Link to="/Calender/12" className='text-5xl'>&gt;</Link>
       </div>
 
       <div className='flex gap-2 pt-5 pb-2'>
@@ -108,21 +103,6 @@ const CalenderMain = () => {
           <CalenderBox />
           <CalenderBox />
           <CalenderBox />
-          <CalenderBox />
-          <CalenderBox />
-      	</div>
-      )}
-
-      {month==1 && (
-        <div className='grid grid-cols-7 gap-2'>
-          <CalenderBox />
-          <CalenderBox />
-          <CalenderBox />
-          <CalenderBox />
-          {dates.map((date) => (
-            <CalenderBox key={date} date={date} completed={result[date - 1] || []} />
-          )
-          )}
           <CalenderBox />
       	</div>
       )}
