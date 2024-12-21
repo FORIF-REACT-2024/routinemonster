@@ -67,6 +67,12 @@ const Profile = ({ setData, darkMode }) => {
                         >
                             오늘의 루틴
                         </button>
+                        <button
+                            onClick={handleRoutineList}
+                            className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
+                        >
+                            루틴 목록
+                        </button>
 
                         <button
                             onClick={handleCalender}
@@ -75,19 +81,13 @@ const Profile = ({ setData, darkMode }) => {
                             캘린더
                         </button>
 
-            <button 
-                onClick={handleMyPage}
-                className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
-            >
-                마이페이지
-            </button>
-
-                        <button
-                            onClick={handleRoutineList}
+                        <button 
+                            onClick={handleMyPage}
                             className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
                         >
-                            루틴 목록
+                            마이페이지
                         </button>
+
                     </div>
                 </div>
             </div>
