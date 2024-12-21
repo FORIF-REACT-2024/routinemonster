@@ -3,6 +3,7 @@ import axios from 'axios';
 import CommentInput from '../components/CommentInput';
 import TodayRoutineItem from '../components/TodayRoutineItem';
 import { Checkbox } from '@mui/material';
+import { useOutletContext } from 'react-router-dom';
 
 const RoutineToday = () => {
     const [routines, setRoutines] = useState([]);
@@ -10,6 +11,7 @@ const RoutineToday = () => {
     const [error, setError] = useState(null);
     const [checkedRoutines, setCheckedRoutines] = useState([]); // 체크된 루틴 ID 저장
     const [comment, setComment] = useState(''); // 코멘트 저장
+    const { darkMode } = useOutletContext();
 
     useEffect(() => {
         const fetchRoutines = async () => {
@@ -57,7 +59,7 @@ const RoutineToday = () => {
     };
 
     // 저장 버튼 클릭 핸들러
-   const handleSave = async () => {
+    const handleSave = async () => {
     const now = new Date();
     const today = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`;
 
@@ -114,7 +116,7 @@ const RoutineToday = () => {
                             {routines.map((routine, index) => (
                                 <div key={index} className="flex items-center space-x-4">
                                     <Checkbox/>
-                                    <TodayRoutineItem routine={routine} />
+                                    <TodayRoutineItem routine={routine} darkMode={darkMode} />
                                 </div>
                             ))}
                         </div>
@@ -123,13 +125,14 @@ const RoutineToday = () => {
                             <CommentInput 
                                 value={comment}
                                 onChange={handleCommentChange}
+                                darkMode={darkMode}
                             />
                         </div>
 
                         <div className="mt-4 text-center">
                             <button 
                                 onClick={handleSave}
-                                className="px-6 py-2 bg-blue-100 text-blue-800 rounded-md hover:bg-blue-200 transition-colors"
+                                className={`px-6 py-2 ${darkMode ? 'bg-gray-700 text-blue-50 hover:bg-gray-600' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'} rounded-md transition-colors`}
                             >
                                 저장하기
                             </button>
