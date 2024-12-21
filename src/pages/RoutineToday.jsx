@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import CommentInput from '../components/CommentInput';
 import TodayRoutineItem from '../components/TodayRoutineItem';
 import { Checkbox } from '@mui/material';
