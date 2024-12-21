@@ -2,13 +2,20 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ 
-    date = '2024.11.21.목',
     nickname = '닉네임',
     profileImage,
     onMyPagePress,
     setData
 }) => {
     const navigate = useNavigate();
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        weekday: 'short'
+    });
+    
     const handleTodayRoutine = () => {
         setData(0);
         navigate('/today');
@@ -26,7 +33,7 @@ const Profile = ({
         <div className="flex flex-col p-8 border-2 border-blue-400 rounded-2xl bg-white w-64">
         {/* 날짜 표시 - 크기와 패딩 증가 */}
         <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
-            <span className="text-3xl font-bold">{date}</span>
+            <span className="text-2xl font-bold">{formattedDate}</span>
         </div>
 
         {/* 점선으로 감싸진 컨텐츠 영역 - 패딩 증가 */}
