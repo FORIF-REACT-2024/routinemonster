@@ -43,7 +43,7 @@ const MyPage = () => {
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>{error}</div>;
 
-  const { name = "닉네임 없음", email = "이메일 없음", picture } = userInfo || {};
+  const { name =localStorage.getItem('userName'), email =localStorage.getItem('userEmail'), picture } = userInfo || {};
 
   return (
     <div>
@@ -52,9 +52,9 @@ const MyPage = () => {
       <div className="flex justify-center mb-8">
       
       <div className="w-32 h-32 rounded-full border-2 overflow-hidden">
-  {picture ? (
+  {localStorage.getItem('userPicture') ? (
     <img 
-      src={picture} 
+      src={localStorage.getItem('userPicture')}
       alt="프로필 사진" 
       className="w-full h-full object-cover object-center"
     />

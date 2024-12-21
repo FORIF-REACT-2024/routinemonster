@@ -1,18 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Profile = ({ onMyPagePress, setData, darkMode }) => {
+
+const Profile = ({ setData, darkMode }) => {
     const navigate = useNavigate();
-    const [userData, setUserData] = useState(null);
-    
-    useEffect(() => {
-        // localStorage에서 사용자 정보 가져오기
-        const storedProfile = localStorage.getItem('userProfile');
-        if (storedProfile) {
-            const parsed = JSON.parse(storedProfile);
-            setUserData(parsed);
-        }
-    }, []);
+    console.log(localStorage.getItem('userName'));
 
     const today = new Date();
     const formattedDate = today.toLocaleDateString('ko-KR', {
@@ -53,9 +45,9 @@ const Profile = ({ onMyPagePress, setData, darkMode }) => {
                 <div className="border-2 border-gray-200 rounded-xl m-[1px] p-8">
                     <div className="flex flex-col items-center mb-20">
                         <div className="mb-4">
-                            {userData?.picture ? (
+                            {localStorage.getItem('userPicture') ? (
                                 <img
-                                    src={userData.picture}
+                                    src={localStorage.getItem('userPicture')}
                                     alt="프로필"
                                     className="w-32 h-32 rounded-full object-cover"
                                 />
@@ -64,7 +56,7 @@ const Profile = ({ onMyPagePress, setData, darkMode }) => {
                             )}
                         </div>
                         <span className="text-2xl font-bold mt-4">
-                            {userData?.name || '사용자'}
+                            {localStorage.getItem('userName') || '사용자'}
                         </span>
                     </div>
 

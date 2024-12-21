@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 const Main = () => {
   const [page, setPage] = useState(0); // 상태 생성
   const [darkMode, setDarkMode] = useState(false);
+  const [userInfo, setUserInfo] = useState(null); 
 
   useEffect(() => {
     if (darkMode) {
@@ -18,6 +19,13 @@ const Main = () => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  const handleLoginSuccess = (userInfo) => {
+    console.log("handleLoginSuccess called with:", userInfo);
+    setUserInfo(userInfo);
+  };
+
+  console.log("userInfo in Main:", userInfo);
 
   return (
     <div className={`flex flex-col items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-blue-100 text-black'}`}>
@@ -33,7 +41,7 @@ const Main = () => {
 
       <div className="flex">
         <div className="pr-3">
-          <Profile setData={setPage} darkMode={darkMode} />
+          <Profile setData={setPage} darkMode={darkMode} userInfo={userInfo} />
         </div>
 
         <div className={`flex flex-col items-center w-[750px] border-2 ${darkMode ? 'border-blue-400 bg-gray-800' : 'border-blue-400 bg-white'} rounded-2xl`}>
