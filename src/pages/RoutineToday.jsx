@@ -57,41 +57,57 @@ const RoutineToday = () => {
     };
 
     // 저장 버튼 클릭 핸들러
-    const handleSave = async () => {
-        try {
-            const today = new Date().toISOString().split('T')[0];
+   const handleSave = async () => {
+    const now = new Date();
+    const today = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`;
 
-            // 체크된 루틴 저장
-            const checkResponse = await axios.patch(`http://localhost:3000/api/date/check`, {
+    try {
+        // 체크된 루틴 저장 전 로그
+        if (checkedRoutines.length > 0) {
+            console.log('체크된 루틴 저장 시도:', {
                 date: today,
                 checkedRoutineIds: checkedRoutines
-            }, {
-                withCredentials: true
             });
+        }
 
-            // 코멘트 저장
-            const commentResponse = await axios.patch(`http://localhost:3000/api/date/comment`, {
+        // 코멘트 저장 전 로그
+        if (comment) {
+            console.log('코멘트 저장 시도:', {
                 date: today,
                 comment: comment
-            }, {
-                withCredentials: true
             });
 
-            if (checkResponse.data.success && commentResponse.data.success) {
-                alert('성공적으로 저장되었습니다!🥳');
-            }
-        } catch (error) {
-            console.error("저장 중 오류 발생:", error);
-            alert('저장 중 오류가 발생했습니다.');
+            const response = await axios.patch(
+                'http://localhost:3000/api/date/comment',
+                {
+                    date: today,
+                    comment: comment.trim()
+                },
+                {
+                    withCredentials: true
+                }
+            );
+
+            // 응답 로그
+            console.log('서버 응답:', response.data);
         }
-    };
+
+        alert('저장되었습니다! 🐥');
+    } catch (error) {
+        // 자세한 에러 정보
+        console.error('에러 전체 정보:', error);
+        console.error('응답 데이터:', error.response?.data);
+        console.error('에러 상태:', error.response?.status);
+        alert('저장 안됨 ㅁㅊ거');
+    }
+};
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
     return (
         <div>
-            <div className=" rounded-2xl p-6 w-full max-w-2xl">
+            <div className="border-2 border-blue-200 rounded-2xl bg-white p-6 w-full max-w-2xl">
                 <div className="space-y-4">
                     <div className="flex-1">
                         <div className="space-y-4">
