@@ -5,7 +5,8 @@ const Profile = ({
     nickname = '닉네임',
     profileImage,
     onMyPagePress,
-    setData
+    setData,
+    darkMode
 }) => {
     const navigate = useNavigate();
     const today = new Date();
@@ -34,6 +35,10 @@ const Profile = ({
         {/* 날짜 표시 - 크기와 패딩 증가 */}
         <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
             <span className="text-2xl font-bold">{formattedDate}</span>
+        <div className={`${darkMode ? 'border-blue-400 bg-gray-800' : 'border-blue-400 bg-white'} flex flex-col p-8 border-2 border-blue-400 rounded-2xl w-64`}>
+        {/* 날짜 표시 */}
+        <div className={`${darkMode ? 'bg-blue-50' : 'bg-blue-50'} py-4 px-8 rounded-2xl text-center mb-8`}>
+            <span className="text-black text-3xl font-bold">{date}</span>
         </div>
 
         {/* 점선으로 감싸진 컨텐츠 영역 - 패딩 증가 */}

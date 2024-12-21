@@ -35,7 +35,7 @@ export default function RoutineItem({ category, title, startDate, endDate, frequ
     const startDay = new Date(startDate).getDay();
     const endDay = new Date(endDate).getDay();
     return (
-        <div className="w-[900px] h-[60px] bg-white border border-blue-200 rounded-lg flex items-center p-2">
+        <div className="w-[1000px] h-[60px] border border-blue-200 rounded-lg flex items-center p-2">
             {/* 카테고리 표시 */}
             <CategoryBox category={category} />
 
