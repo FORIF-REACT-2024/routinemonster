@@ -18,8 +18,11 @@ const Profile = ({
         navigate('/Calender/11');
     }
     const handleMyPage = () => {
+        console.log('마이페이지 클릭, setData 호출 전:', 2);
         setData(2);
+        console.log('setData 호출 후, navigate 전');
         navigate('/mypage');
+        console.log('navigate 호출 후');
     }
     const handleRoutineList = () => {
         setData(3);

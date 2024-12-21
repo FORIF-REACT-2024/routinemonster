@@ -11,7 +11,7 @@ import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
 import LoginCompletePage from "./pages/LoginCompletePage.jsx";
 import Main from "./pages/Main.jsx";
-import LadningPage from "./pages/LandingPage.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
 import MyPage from "./pages/MyPage.jsx";
 
 const router = createBrowserRouter([

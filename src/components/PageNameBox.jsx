@@ -11,3 +11,4 @@ const PageNameBox = ({page}) => {
 }
 
 export default PageNameBox;
+

@@ -6,6 +6,8 @@ import { Outlet } from 'react-router-dom';
 const Main = () => {
 	const [page, setPage] = useState(0); // 상태 생성
 
+	console.log('현재 페이지 상태:', page);
+
 	return (
 		<div className="flex flex-col items-center justify-start min-h-screen">
 			<div className="flex flex-col items-start"> {/* 텍스트와 아래 박스를 감싸는 컨테이너 */}

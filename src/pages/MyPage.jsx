@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom"; // useLocation 추가
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 const MyPage = () => {
-  const [currentPage, setCurrentPage] = useState(2); // 현재 페이지
+  const location = useLocation(); // useLocation 사용
+  const { name, email, picture } = location.state || {}; // navigate.state를 location.state로 변경
+  
+  const [currentPage, setCurrentPage] = useState(2);
   const [totalPages, setTotalPages] = useState(2);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { name, email, picture } = navigate.state || {};
 
   return (
     <div>
@@ -18,7 +20,7 @@ const MyPage = () => {
 
      <img 
             src={picture} 
-            alt="프로필 사진" 
+            alt="사진 없음" 
             className="w-full h-full object-cover object-center"
           />
 
