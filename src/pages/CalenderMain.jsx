@@ -4,6 +4,7 @@ import CalenderDay from '../components/CalenderDay';
 import CalenderBox from '../components/CalenderBox';
 import { useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
+import IsLoggedIn from '../components/IsLoggedIn';
 
 const CalenderMain = () => {
   const { monthprop } = useParams();
