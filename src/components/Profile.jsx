@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Profile = ({ onMyPagePress, setData }) => {
+const Profile = ({ onMyPagePress, setData, darkMode }) => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
     
@@ -38,8 +38,8 @@ const Profile = ({ onMyPagePress, setData }) => {
     };
 
     return (
-        <div className="flex flex-col p-8 border-2 border-blue-400 rounded-2xl bg-white w-64">
-            <div className="bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
+        <div className={`flex flex-col p-8 border-2 ${darkMode ? 'border-blue-400 bg-gray-800' : 'border-blue-400 bg-white'} rounded-2xl w-64`}>
+            <div className="text-black bg-blue-50 py-4 px-8 rounded-2xl text-center mb-8">
                 <span className="text-2xl font-bold">{formattedDate}</span>
             </div>
 
