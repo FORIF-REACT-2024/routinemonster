@@ -19,7 +19,7 @@ const Profile = ({ setData, darkMode }) => {
         navigate('/today');
     };
 
-    const handleCalender = () => {
+    const handleCalendar = () => {
         const year = new Date().getFullYear();
         const month = new Date().getMonth()+1;
         setData(1);
@@ -77,7 +77,7 @@ const Profile = ({ setData, darkMode }) => {
                         </button>
 
                         <button
-                            onClick={handleCalender}
+                            onClick={handleCalendar}
                             className={`w-36 py-3 ${darkMode ? 'text-white bg-slate-700 hover:bg-slate-600':'text-black bg-[#93C5FD] hover:bg-blue-100'} rounded-2xl text-2xl font-bold transition-colors`}
                         >
                             캘린더
