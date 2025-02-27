@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import CommentInput from '../components/CommentInput';
-import TodayRoutineItem from '../components/TodayRoutineItem';
-import { Checkbox } from '@mui/material';
-import { useOutletContext } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CommentInput from "../components/CommentInput";
+import TodayRoutineItem from "../components/TodayRoutineItem";
+import { Checkbox } from "@mui/material";
+import { useOutletContext } from "react-router-dom";
 
 const RoutineToday = () => {
     const [routines, setRoutines] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [checkedRoutines, setCheckedRoutines] = useState([]); // 체크된 루틴 ID 저장
-    const [comment, setComment] = useState(''); // 코멘트 저장
+    const [comment, setComment] = useState("");
     const { darkMode } = useOutletContext();
 
     useEffect(() => {
         const fetchRoutines = async () => {
             try {
-                const today = new Date().toISOString().split('T')[0];
-                
+                const today = new Date().toISOString().split("T")[0];
                 const response = await axios.get(`http://localhost:3000/api/date`, {
-                    params: {
-                        date: today
-                    },
-                    withCredentials: true
+                    params: { date: today },
+                    withCredentials: true,
                 });
 
                 if (response.data.success) {
-                    setRoutines(response.data.data.todaylist || []);
+                    const fetchedRoutines = response.data.data.todaylist || [];
+                    // 각 루틴에 checked 속성을 명시적으로 추가
+                    setRoutines(fetchedRoutines.map(routine => ({ ...routine, checked: false })));
                     setError(null);
                 } else {
                     throw new Error(response.data.message || "루틴 조회 실패");
@@ -38,71 +36,66 @@ const RoutineToday = () => {
                 setLoading(false);
             }
         };
-
         fetchRoutines();
     }, []);
 
-    // 체크박스 상태 변경 핸들러
-    const handleCheck = (routineId) => {
-        setCheckedRoutines(prev => {
-            if (prev.includes(routineId)) {
-                return prev.filter(id => id !== routineId);
-            } else {
-                return [...prev, routineId];
-            }
-        });
+    const handleCheckboxChange = (routineId) => {
+        setRoutines(prevRoutines => prevRoutines.map(routine => 
+            routine.id === routineId ? { ...routine, checked: !routine.checked } : routine
+        ));
     };
 
-    // 코멘트 변경 핸들러
     const handleCommentChange = (value) => {
         setComment(value);
     };
 
-    // 저장 버튼 클릭 핸들러
     const handleSave = async () => {
-    const now = new Date();
-    const today = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, '0')}-${String(now.getUTCDate()).padStart(2, '0')}`;
+        try {
+            const today = new Date().toISOString().split("T")[0];
+            
+            // 체크된 루틴만 필터링하여 ID 배열 생성
+            const checkedRoutines = routines.filter(routine => routine.checked === true);
+            const checkedRoutineIds = checkedRoutines.map(routine => routine.id);
+            
+            console.log('체크된 루틴들:', checkedRoutines);
+            console.log('체크된 루틴 IDs:', checkedRoutineIds);
 
-    try {
-        // 체크된 루틴 저장 전 로그
-        if (checkedRoutines.length > 0) {
-            console.log('체크된 루틴 저장 시도:', {
-                date: today,
-                checkedRoutineIds: checkedRoutines
-            });
-        }
-
-        // 코멘트 저장 전 로그
-        if (comment) {
-            console.log('코멘트 저장 시도:', {
-                date: today,
-                comment: comment
-            });
-
-            const response = await axios.patch(
-                'http://localhost:3000/api/date/comment',
-                {
+            if (checkedRoutineIds.length > 0) {
+                await axios.patch('http://localhost:3000/api/date/check', {
                     date: today,
-                    comment: comment.trim()
-                },
-                {
-                    withCredentials: true
+                    checkedRoutineIds,
+                }, { withCredentials: true });
+                
+                console.log('체크된 루틴 저장 완료:', checkedRoutineIds);
+            } else {
+                console.log("체크된 루틴이 없습니다.");
+            }
+
+                // 코멘트 저장 전 로그
+            if (comment) {
+                console.log('코멘트 저장 시도:', {
+                    date: today,
+                    comment: comment
+                });
+
+                const response = await axios.patch(
+                    'http://localhost:3000/api/date/comment',
+                    {
+                        date: today,
+                        comment: comment.trim()
+                    },{ withCredentials: true}
+                );
+
+                if (response.status === 200) {
+                    alert("코멘트 저장 완료✔️");
                 }
-            );
-
-            // 응답 로그
-            console.log('서버 응답:', response.data);
+            }
+        } catch (error) {
+            console.error('에러 전체 정보:', error);
+            console.error('응답 데이터:', error.response?.data); 
+            alert('저장 안됨 ㅜㅜ');
         }
-
-        alert('저장되었습니다! 🐥');
-    } catch (error) {
-        // 자세한 에러 정보
-        console.error('에러 전체 정보:', error);
-        console.error('응답 데이터:', error.response?.data);
-        console.error('에러 상태:', error.response?.status);
-        alert('저장 안됨 ㅁㅊ거');
-    }
-};
+    };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
@@ -113,26 +106,31 @@ const RoutineToday = () => {
                 <div className="space-y-4">
                     <div className="flex-1">
                         <div className="space-y-4">
-                            {routines.map((routine, index) => (
-                                <div key={index} className="flex items-center space-x-4">
-                                    <Checkbox/>
-                                    <TodayRoutineItem routine={routine} darkMode={darkMode} />
-                                </div>
-                            ))}
+                            {routines.length > 0 ? (
+                                routines.map((routine) => (
+                                    <div key={routine.id} className="flex items-center space-x-4">
+                                        <Checkbox
+                                            checked={routine.checked}
+                                            onChange={() => handleCheckboxChange(routine.id)}
+                                        />
+                                        <TodayRoutineItem routine={routine} darkMode={darkMode} />
+                                    </div>
+                                ))
+                            ) : (
+                                <div>오늘의 루틴이 없습니다.</div>
+                            )}
                         </div>
 
                         <div className="mt-6">
-                            <CommentInput 
-                                value={comment}
-                                onChange={handleCommentChange}
-                                darkMode={darkMode}
-                            />
+                            <CommentInput value={comment} onChange={handleCommentChange} darkMode={darkMode} />
                         </div>
 
                         <div className="mt-4 text-center">
-                            <button 
+                            <button
                                 onClick={handleSave}
-                                className={`px-6 py-2 ${darkMode ? 'bg-gray-700 text-blue-50 hover:bg-gray-600' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'} rounded-md transition-colors`}
+                                className={`px-6 py-2 ${
+                                    darkMode ? "bg-gray-700 text-blue-50 hover:bg-gray-600" : "bg-blue-100 text-blue-800 hover:bg-blue-200"
+                                } rounded-md transition-colors`}
                             >
                                 저장하기
                             </button>
