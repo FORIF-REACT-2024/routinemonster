@@ -20,8 +20,10 @@ const Profile = ({ setData, darkMode }) => {
     };
 
     const handleCalender = () => {
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth()+1;
         setData(1);
-        navigate('/Calender/12');
+        navigate(`/Calendar?year=${year}&month=${month}`);
     }
     const handleMyPage = () => {
         console.log('마이페이지 클릭, setData 호출 전:', 2);

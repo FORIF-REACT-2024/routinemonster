@@ -17,7 +17,7 @@ const CalendarBox = ({ date, completed }) => {
 			<p className="text-lg text-center">{date}</p> 
 
 			{/* 완료한 루틴이 있을 때 최대 3개 표시 */}
-			{completed && completed.length > 0 ? (
+			{date && completed && completed.length > 0 ? (
         completed.slice(0, 3).map((routine, index) => {
           const color = getColor(routine.category); //카테고리별 색상
 

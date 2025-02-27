@@ -6,13 +6,13 @@ import App from "./App.jsx";
 import RoutineToday from "./pages/RoutineToday.jsx";
 import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CalenderMain from "./pages/CalenderMain.jsx";
 import RoutineAdd from "./pages/RoutineAdd.jsx";
 import RoutineList from "./pages/RoutineList.jsx";
 import LoginCompletePage from "./pages/LoginCompletePage.jsx";
 import Main from "./pages/Main.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import MyPage from "./pages/MyPage.jsx";
+import CalendarMain from "./pages/CalendarMain.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +36,8 @@ const router = createBrowserRouter([
         element: <RoutineToday />,
       },
       {
-        path: "/Calender/:monthprop",
-        element: <CalenderMain />,
+        path: "/Calendar",
+        element: <CalendarMain />,
       },
       {
         path: "/Add",
