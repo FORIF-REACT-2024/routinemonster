@@ -14,33 +14,35 @@ const RoutineToday = () => {
     const { darkMode } = useOutletContext();
 
     useEffect(() => {
-        const fetchRoutines = async () => {
-            try {
-                const today = new Date().toISOString().split('T')[0];
-                
-                const response = await axios.get(`http://localhost:3000/api/date`, {
-                    params: {
-                        date: today
-                    },
-                    withCredentials: true
-                });
+    const fetchRoutines = async () => {
+        try {
+            const today = new Date().toISOString().split('T')[0];
+            
+            const response = await axios.get(`http://localhost:3000/api/date`, {
+                params: {
+                    date: today
+                },
+                withCredentials: true
+            });
 
-                if (response.data.success) {
-                    setRoutines(response.data.data.todaylist || []);
-                    setError(null);
-                } else {
-                    throw new Error(response.data.message || "루틴 조회 실패");
-                }
-            } catch (error) {
-                console.error("Failed to fetch routines:", error);
-                setError(error.message || "루틴 조회 중 오류가 발생했습니다.");
-            } finally {
-                setLoading(false);
+            if (response.data.success) {
+                setRoutines(response.data.data.todaylist || []);
+                console.log('루틴 조회 성공:', response.data.data.todaylist);
+                setError(null);
+            } else {
+                throw new Error(response.data.message || "루틴 조회 실패");
             }
-        };
+        } catch (error) {
+            console.error("Failed to fetch routines:", error);
+            setError(error.message || "루틴 조회 중 오류가 발생했습니다.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        fetchRoutines();
-    }, []);
+    fetchRoutines();
+}, []);
+
 
     // 체크박스 상태 변경 핸들러
     const handleCheck = (routineId) => {
